@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18歳未満の利用制限について - 丸ペケゲーム</title>
+    <style>
+        /* 全体のリセットとベース設定 */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.7;
+            color: #333333;
+            background-color: #f4f7f9; /* 目に優しい淡いグレーブルー */
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        /* メインコンテナ */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px; /* 角を丸くして柔らかい印象に */
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05); /* 軽い影で浮き上がらせる */
+        }
+
+        /* メインタイトル */
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 35px;
+            color: #111111;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: #dc3545; /* 制限・警告を示すアクセントカラーの赤 */
+            border-radius: 2px;
+        }
+
+        /* 警告を強調するボックス */
+        .warning-box {
+            background-color: #fff5f5;
+            border: 1px solid #fecdd3;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+        .warning-box p {
+            font-size: 16px;
+            font-weight: bold;
+            color: #dc3545;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* 各章のスタイル */
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111111;
+            margin-top: 35px;
+            margin-bottom: 12px;
+            padding-left: 12px;
+            border-left: 4px solid #dc3545; /* 左側に赤の縦線 */
+        }
+
+        p {
+            font-size: 15px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #444444;
+        }
+
+        /* フッター（制定日などが必要な場合のためのスペース） */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #eeeeee;
+            text-align: right;
+            font-size: 14px;
+            color: #888888;
+        }
+
+        /* スマホ向けの微調整 */
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 12px;
+            }
+            .container {
+                padding: 25px 20px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            .warning-box {
+                padding: 16px;
+            }
+            .warning-box p {
+                font-size: 14px;
+                text-align: left;
+            }
+            h2 {
+                font-size: 16px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>18歳未満の利用制限について</h1>
+    
+    <div class="warning-box">
+        <p>本アプリは、18歳未満の方がご利用いただくことはできません。18歳未満の方は、本アプリのダウンロードおよび利用を行わないものとします。</p>
+    </div>
+
+    <h2>利用の停止およびブロックについて</h2>
+    <p>開発者は、ユーザーが18歳未満であること、または虚偽の申告によって利用していることを知った場合、事前の通知なしに当該ユーザーによる本アプリの利用を停止し、アクセスをブロックする権利を有します。</p>
+
+    <h2>免責事項</h2>
+    <p>18歳未満の利用に起因して生じたトラブルや法的・実務上の問題について、開発者は一切の責任を負わないものとします。</p>
+
+    <div class="footer">
+        <p>丸ペケゲーム 開発者</p>
+    </div>
+</div>
+
+</body>
+</html>
