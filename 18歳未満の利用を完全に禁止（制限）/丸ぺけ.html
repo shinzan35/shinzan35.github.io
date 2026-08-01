@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>18歳未満の利用制限について - 丸ペケゲーム</title>
+    <title>プライバシーポリシー - 丸ペケゲーム</title>
     <style>
         /* 全体のリセットとベース設定 */
         * {
@@ -30,11 +30,11 @@
 
         /* メインタイトル */
         h1 {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
             text-align: center;
             margin-top: 0;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             color: #111111;
             position: relative;
             padding-bottom: 15px;
@@ -47,24 +47,15 @@
             transform: translateX(-50%);
             width: 60px;
             height: 4px;
-            background-color: #dc3545; /* 制限・警告を示すアクセントカラーの赤 */
+            background-color: #0066cc; /* アクセントカラーの青 */
             border-radius: 2px;
         }
 
-        /* 警告を強調するボックス */
-        .warning-box {
-            background-color: #fff5f5;
-            border: 1px solid #fecdd3;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 30px;
-        }
-        .warning-box p {
-            font-size: 16px;
-            font-weight: bold;
-            color: #dc3545;
-            margin: 0;
-            text-align: center;
+        /* リード文 */
+        .lead-text {
+            font-size: 15px;
+            color: #555555;
+            margin-bottom: 35px;
         }
 
         /* 各章のスタイル */
@@ -75,7 +66,7 @@
             margin-top: 35px;
             margin-bottom: 12px;
             padding-left: 12px;
-            border-left: 4px solid #dc3545; /* 左側に赤の縦線 */
+            border-left: 4px solid #0066cc; /* 左側に青い縦線 */
         }
 
         p {
@@ -85,7 +76,45 @@
             color: #444444;
         }
 
-        /* フッター（制定日などが必要な場合のためのスペース） */
+        /* リストのスタイル */
+        ul {
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        li {
+            font-size: 15px;
+            color: #444444;
+            margin-bottom: 8px;
+        }
+
+        /* リンク */
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: #004499;
+            text-decoration: underline;
+        }
+
+        /* お問い合わせ情報の枠 */
+        .contact-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+        .contact-box p {
+            margin-bottom: 8px;
+        }
+        .contact-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* フッター（制定日） */
         .footer {
             margin-top: 50px;
             padding-top: 20px;
@@ -104,19 +133,12 @@
                 padding: 25px 20px;
             }
             h1 {
-                font-size: 20px;
-            }
-            .warning-box {
-                padding: 16px;
-            }
-            .warning-box p {
-                font-size: 14px;
-                text-align: left;
+                font-size: 22px;
             }
             h2 {
                 font-size: 16px;
             }
-            p {
+            p, li {
                 font-size: 14px;
             }
         }
@@ -125,20 +147,37 @@
 <body>
 
 <div class="container">
-    <h1>18歳未満の利用制限について</h1>
+    <h1>プライバシーポリシー</h1>
+    <p class="lead-text">本アプリ「丸ペケゲーム」（以下「本アプリ」）における利用者情報の取扱いについて、以下の通りプライバシーポリシーを定めます。</p>
+
+    <h2>1. 収集する情報および収集方法</h2>
+    <p>本アプリでは、広告配信（Google AdMob）およびアプリの利用状況分析のために、匿名化された端末識別子、広告データ、アプリの利用ログデータを自動的に収集する場合があります。個人を特定する情報は収集いたしません。</p>
+
+    <h2>2. 利用目的</h2>
+    <p>収集した情報は、以下の目的にのみ利用されます。</p>
+    <ul>
+        <li>アプリ内での広告表示の最適化および配信管理</li>
+        <li>利用状況の統計的分析による、サービス向上・バグ修正</li>
+    </ul>
+
+    <h2>3. 広告配信について（外部送信・第三者提供）</h2>
+    <p>本アプリには、サードパーティの広告配信サービス「Google AdMob」が組み込まれています。広告配信事業者は、ユーザーの興味に合わせた広告を表示するためにCookieやデバイス識別子を使用することがあります。</p>
+    <p>データがどのように収集・処理されるかについての詳細は、以下のGoogleのポリシーページをご参照ください。</p>
+    <p><a href="https://google.com" target="_blank" rel="noopener noreferrer">Google のポリシーと規約（外部サイト）</a></p>
+
+    <h2>4. 免責事項</h2>
+    <p>本アプリの利用により生じたトラブルや損失・損害について、開発者は法令に定めがある場合を除き、一切の責任を負いかねますのでご了承ください。</p>
+
+    <h2>5. お問い合わせ窓口</h2>
+    <p>本アプリにおける利用者情報の取扱いに関するお問い合わせは、以下の連絡先までお願いいたします。</p>
     
-    <div class="warning-box">
-        <p>本アプリは、18歳未満の方がご利用いただくことはできません。18歳未満の方は、本アプリのダウンロードおよび利用を行わないものとします。</p>
+    <div class="contact-box">
+        <p><strong>開発者名：</strong>shinzan35</p>
+        <p><strong>メールアドレス：</strong><a href="mailto:shinzan35@ymail.ne.jp">shinzan35@ymail.ne.jp</a></p>
     </div>
 
-    <h2>利用の停止およびブロックについて</h2>
-    <p>開発者は、ユーザーが18歳未満であること、または虚偽の申告によって利用していることを知った場合、事前の通知なしに当該ユーザーによる本アプリの利用を停止し、アクセスをブロックする権利を有します。</p>
-
-    <h2>免責事項</h2>
-    <p>18歳未満の利用に起因して生じたトラブルや法的・実務上の問題について、開発者は一切の責任を負わないものとします。</p>
-
     <div class="footer">
-        <p>丸ペケゲーム 開発者</p>
+        <p>制定日：2026年8月1日</p>
     </div>
 </div>
 
