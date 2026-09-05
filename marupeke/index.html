@@ -66,16 +66,9 @@
         h1 {
             text-align: center;
             font-size: 1.8rem;
-            margin-bottom: 5px;
+            margin-bottom: 25px;
             color: var(--text-main);
             margin-top: 10px;
-        }
-
-        .app-name {
-            text-align: center;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 25px;
         }
 
         /* タブメニューのスタイル */
@@ -220,7 +213,6 @@
     </div>
 
     <h1>丸ペケゲーム</h1>
-    <div class="app-name" id="main-subtitle">プライバシーポリシー ＆ 利用規約</div>
 
     <!-- タブ切り替えボタン -->
     <div class="tab-menu">
@@ -402,13 +394,11 @@
         document.getElementById('lang-ja').classList.toggle('active', lang === 'ja');
         document.getElementById('lang-en').classList.toggle('active', lang === 'en');
 
-        // サブタイトルとタブのテキスト切替
+        // タブのテキスト切替
         if (lang === 'ja') {
-            document.getElementById('main-subtitle').textContent = 'プライバシーポリシー ＆ 利用規約';
             document.getElementById('tab-btn-privacy').textContent = 'プライバシーポリシー';
             document.getElementById('tab-btn-terms').textContent = '利用規約';
         } else {
-            document.getElementById('main-subtitle').textContent = 'Privacy Policy & Terms of Service';
             document.getElementById('tab-btn-privacy').textContent = 'Privacy Policy';
             document.getElementById('tab-btn-terms').textContent = 'Terms of Service';
         }
