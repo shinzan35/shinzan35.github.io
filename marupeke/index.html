@@ -3,143 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>プライバシーポリシー - 丸ペケゲーム</title>
+    <title>丸ペケゲーム - プライバシーポリシー & 利用規約 / Privacy Policy & Terms of Service</title>
     <style>
-        /* 全体のリセットとベース設定 */
-        * {
-            box-sizing: border-box;
+        :root {
+            --primary-color: #007aff;
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-secondary: #86868b;
+            --border-color: #d2d2d7;
         }
+
         body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            line-height: 1.7;
-            color: #333333;
-            background-color: #f4f7f9; /* 目に優しい淡いグレーブルー */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
             margin: 0;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
-        /* メインコンテナ */
         .container {
-            max-width: 720px;
+            max-width: 800px;
             margin: 0 auto;
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 12px; /* 角を丸くして柔らかい印象に */
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05); /* 軽い影で浮き上がらせる */
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            padding: 30px;
+            position: relative;
         }
 
-        /* メインタイトル */
-        h1 {
-            font-size: 26px;
-            font-weight: 700;
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 30px;
-            color: #111111;
-            position: relative;
-            padding-bottom: 15px;
+        /* 言語切替ボタン（右上） */
+        .lang-switch {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            display: flex;
+            background-color: var(--bg-color);
+            border-radius: 20px;
+            padding: 3px;
         }
-        h1::after {
+
+        .lang-btn {
+            background: none;
+            border: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            padding: 6px 12px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background-color: var(--card-bg);
+            color: var(--primary-color);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--text-main);
+            margin-top: 10px;
+        }
+
+        .app-name {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        /* タブメニューのスタイル */
+        .tab-menu {
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 12px 24px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+
+        .tab-btn.active::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background-color: #0066cc; /* アクセントカラーの青 */
-            border-radius: 2px;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px 3px 0 0;
         }
 
-        /* リード文 */
-        .lead-text {
-            font-size: 15px;
-            color: #555555;
-            margin-bottom: 35px;
+        /* 言語・タブコンテンツの切り替え制御 */
+        .lang-section {
+            display: none;
+        }
+        .lang-section.active {
+            display: block;
         }
 
-        /* 各章のスタイル */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         h2 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #111111;
-            margin-top: 35px;
+            font-size: 1.25rem;
+            margin-top: 25px;
             margin-bottom: 12px;
-            padding-left: 12px;
-            border-left: 4px solid #0066cc; /* 左側に青い縦線 */
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+            color: var(--text-main);
         }
 
-        p {
-            font-size: 15px;
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: #444444;
+        p, li {
+            font-size: 0.95rem;
+            color: #333;
+            margin-bottom: 12px;
         }
 
-        /* リストのスタイル */
         ul {
-            margin-top: 0;
-            margin-bottom: 15px;
             padding-left: 20px;
+            margin-bottom: 15px;
         }
+
         li {
-            font-size: 15px;
-            color: #444444;
             margin-bottom: 8px;
         }
 
-        /* リンク */
         a {
-            color: #0066cc;
+            color: var(--primary-color);
             text-decoration: none;
-            transition: color 0.2s ease;
         }
+
         a:hover {
-            color: #004499;
             text-decoration: underline;
         }
 
-        /* お問い合わせ情報の枠 */
+        /* 連絡先ボックス */
         .contact-box {
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            padding: 20px;
-            margin-top: 15px;
+            background-color: #f9f9fb;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
         }
+
         .contact-box p {
-            margin-bottom: 8px;
-        }
-        .contact-box p:last-child {
-            margin-bottom: 0;
+            margin: 4px 0;
         }
 
-        /* フッター（制定日） */
-        .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #eeeeee;
+        /* 制定日 */
+        .date-info {
             text-align: right;
-            font-size: 14px;
-            color: #888888;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 30px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
         }
 
-        /* スマホ向けの微調整 */
-        @media (max-width: 480px) {
+        /* レスポンシブ対応 */
+        @media (max-width: 600px) {
             body {
-                padding: 20px 12px;
+                padding: 10px;
             }
             .container {
-                padding: 25px 20px;
+                padding: 15px;
+                padding-top: 50px;
             }
-            h1 {
-                font-size: 22px;
+            .lang-switch {
+                top: 15px;
+                right: 15px;
             }
-            h2 {
-                font-size: 16px;
-            }
-            p, li {
-                font-size: 14px;
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -147,39 +213,231 @@
 <body>
 
 <div class="container">
-    <h1>プライバシーポリシー</h1>
-    <p class="lead-text">本アプリ「丸ペケゲーム」（以下「本アプリ」）における利用者情報の取扱いについて、以下の通りプライバシーポリシーを定めます。</p>
-
-    <h2>1. 収集する情報および収集方法</h2>
-    <p>本アプリでは、広告配信（Google AdMob）およびアプリの利用状況分析のために、匿名化された端末識別子、広告データ、アプリの利用ログデータを自動的に収集する場合があります。個人を特定する情報は収集いたしません。</p>
-
-    <h2>2. 利用目的</h2>
-    <p>収集した情報は、以下の目的にのみ利用されます。</p>
-    <ul>
-        <li>アプリ内での広告表示の最適化および配信管理</li>
-        <li>利用状況の統計的分析による、サービス向上・バグ修正</li>
-    </ul>
-
-    <h2>3. 広告配信について（外部送信・第三者提供）</h2>
-    <p>本アプリには、サードパーティの広告配信サービス「Google AdMob」が組み込まれています。広告配信事業者は、ユーザーの興味に合わせた広告を表示するためにCookieやデバイス識別子を使用することがあります。</p>
-    <p>データがどのように収集・処理されるかについての詳細は、以下のGoogleのポリシーページをご参照ください。</p>
-    <p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google のポリシーと規約（外部サイト）</a></p>
-
-    <h2>4. 免責事項</h2>
-    <p>本アプリの利用により生じたトラブルや損失・損害について、開発者は法令に定めがある場合を除き、一切の責任を負いかねますのでご了承ください。</p>
-
-    <h2>5. お問い合わせ窓口</h2>
-    <p>本アプリにおける利用者情報の取扱いに関するお問い合わせは、以下の連絡先までお願いいたします。</p>
-    
-    <div class="contact-box">
-        <p><strong>開発者名：</strong>shinzan35</p>
-        <p><strong>メールアドレス：</strong><a href="mailto:shinzan35@ymail.ne.jp">shinzan35@ymail.ne.jp</a></p>
+    <!-- 言語切替ボタン -->
+    <div class="lang-switch">
+        <button id="btn-ja" class="lang-btn active" onclick="switchLang('ja')">日本語</button>
+        <button id="btn-en" class="lang-btn" onclick="switchLang('en')">English</button>
     </div>
 
-    <div class="footer">
-        <p>制定日：2026年8月1日</p>
+    <h1>丸ペケゲーム</h1>
+    <div class="app-name" id="main-subtitle">プライバシーポリシー ＆ 利用規約</div>
+
+    <!-- タブ切り替えボタン -->
+    <div class="tab-menu">
+        <button id="tab-btn-privacy" class="tab-btn active" onclick="switchTab('privacy')">プライバシーポリシー</button>
+        <button id="tab-btn-terms" class="tab-btn" onclick="switchTab('terms')">利用規約</button>
     </div>
+
+    <!---------------------------------------------------------------- -->
+    <!-- 日本語セクション -->
+    <!---------------------------------------------------------------- -->
+    <div id="lang-ja" class="lang-section active">
+        <!-- 1. プライバシーポリシー (日本語) -->
+        <div id="privacy-content-ja" class="tab-content active">
+            <p>本アプリ「丸ペケゲーム」（以下「本アプリ」）における利用者情報の取扱いについて、以下の通りプライバシーポリシーを定めます。</p>
+
+            <h2>1. 収集する情報について</h2>
+            <p>本アプリは、お客様の個人情報（氏名、住所、電話番号、メールアドレスなど）を一切取得・送信しません。ゲームデータ・対戦成績・ライフ等のプレイデータは、すべてお客様の端末内（ローカル）にのみ保存され、外部に送信されることはありません。また、広告識別子（IDFA）をはじめとする端末識別子や、アプリ内での行動履歴（プレイ内容・移動履歴など）を収集・利用することはありません。</p>
+
+            <h2>2. 利用目的</h2>
+            <p>本アプリは、以下の目的に限り、必要最小限の情報を取り扱います。</p>
+            <ul>
+                <li>広告配信（非パーソナライズ広告に限定）のために、広告配信事業者（Google）への技術情報の送信</li>
+                <li>ゲームの動作に必要なデータ（言語・BGM・対戦成績・ライフなど）の端末内でのみの保存</li>
+            </ul>
+
+            <h2>3. トラッキング完全不実施について</h2>
+            <p>本アプリは、広告識別子（IDFA）を一切取得・利用しません。また、App Tracking Transparency (ATT) によるトラッキング許可ダイアログも表示しません。広告はすべて、利用者の興味・関心や行動履歴を一切使用しない「非パーソナライズ広告（NPA）」に限定して配信します。</p>
+
+            <h2>4. 広告配信について（外部送信）</h2>
+            <p>本アプリには、サードパーティの広告配信サービス「Google AdMob」が組み込まれています。すべての広告リクエストには非パーソナライズ広告（NPA）設定が適用され、広告ターゲティングのためのクロスアプリ・トラッキングや行動履歴の収集は行いません。広告の表示・配信のため、インターネット接続に関する技術情報（IPアドレスなど）が広告配信事業者に送信される場合があります。なお、広告の配信状況の測定や不正防止に関する機能（SKAdNetwork等）は、広告識別子（IDFA）を一切使用しません。</p>
+            <p>外部送信される情報の収集・処理方法の詳細については、以下のGoogleのポリシーページをご参照ください。<br>
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google のポリシーと規約（外部サイト） ↗</a></p>
+
+            <h2>5. 適用地域について</h2>
+            <p>本アプリは、日本・米国・カナダ・オーストラリアの4カ国を対象に配信しています。EU（欧州経済領域）等を対象としていないため、EU域内ユーザー向けの同意管理プロセスは実施していません。本アプリは、上記4カ国における利用者の法的権利を尊重し、各管轄区域の法令（強行法規を含む）が適用される場合には、その規定を遵守します。また、本ポリシーは各国の法制度の変化に応じて適宜見直しを行います。</p>
+
+            <h2>6. 免責事項</h2>
+            <p>本アプリの利用により生じたトラブルや損失・損害について、開発者は法令に定めがある場合を除き、一切の責任を負いかねますのでご了承ください。</p>
+
+            <h2>7. お問い合わせ窓口</h2>
+            <p>本アプリにおける利用者情報の取扱いに関するお問い合わせは、以下の連絡先までお願いいたします。</p>
+            <div class="contact-box">
+                <p><strong>開発者名：</strong> shinzan35</p>
+                <p><strong>メールアドレス：</strong> <a href="mailto:shinzan35@ymail.ne.jp">shinzan35@ymail.ne.jp</a></p>
+            </div>
+
+            <div class="date-info">制定日：2026年8月1日 ／ 最終改定日：2026年9月5日</div>
+        </div>
+
+        <!-- 2. 利用規約 (日本語) -->
+        <div id="terms-content-ja" class="tab-content">
+            <p>本利用規約（以下「本規約」）は、開発者「shinzan35」（以下「当方」）が提供するゲームアプリ「丸ペケゲーム」（以下「本アプリ」）の利用条件を定めるものです。ユーザーが本アプリを利用した時点で、本規約に同意したものとみなされます。</p>
+
+            <h2>第1条 ユーザーの責任</h2>
+            <ul>
+                <li>本アプリ内のコンテンツ（画像、音楽、音声、テキスト等）に関する一切の知的財産権は、当方または正当な権利者に帰属します。ユーザーは、これらの無断転載・複製・改変・再配布等を行ってはなりません。</li>
+                <li>ユーザーは、法令・公序良俗または本規約に反する行為、他のユーザーや第三者に不利益または損害を与える行為（アプリの不正改造、チート行為、不正アクセス等を含む）を行ってはなりません。</li>
+                <li>本アプリのゲームデータ・対戦成績・ライフ等は、すべて端末内（ローカル）にのみ保存されます。端末の故障・紛失・買い替え、アプリの削除、OS更新等によりデータが利用できなくなった場合、当方は一切の責任を負いません。</li>
+            </ul>
+
+            <h2>第2条 免責事項</h2>
+            <ul>
+                <li>本アプリは「現状有姿（as is）」の状態で提供され、当方は動作の完全性、正確性、特定目的への適合性、継続的稼働性等について、明示・黙示を問わずいかなる保証も行いません。</li>
+                <li>本アプリの利用により生じた直接的損害、間接損害、特別損害、結果的損害、逸失利益等について、当方は法令の認める範囲で責任を負いません。ただし、当方の故意または重過失に基づく場合、および強行法規に基づく消費者保護が適用される場合はこの限りではありません。</li>
+            </ul>
+
+            <h2>第3条 準拠法・管轄裁判所・紛争解決</h2>
+            <ul>
+                <li>本規約の解釈および適用は、日本法に準拠します。</li>
+                <li>本アプリに関する紛争のうち法律上の争訟に発展した場合は、第一審の専属的合意管轄裁判所として東京地方裁判所を指定します。</li>
+                <li>当方は、ユーザーとの紛争が生じた場合、裁判に先立ち、日本国内の調停機関・仲裁機関による解決を試みることができます。</li>
+                <li>本条の定めにかかわらず、ユーザーが居住する国・地域の強行法規（消費者保護法を含む）が適用される場合、当方はその規定を尊重し、ユーザーの法的権利を奪わないものとします。</li>
+            </ul>
+
+            <h2>第4条 お問い合わせ</h2>
+            <p>本規約に関するお問い合わせは、以下の連絡先までお願いいたします。</p>
+            <div class="contact-box">
+                <p><strong>開発者名：</strong> shinzan35</p>
+                <p><strong>メールアドレス：</strong> <a href="mailto:shinzan35@ymail.ne.jp">shinzan35@ymail.ne.jp</a></p>
+            </div>
+
+            <div class="date-info">制定日：2026年9月5日</div>
+        </div>
+    </div>
+
+
+    <!---------------------------------------------------------------- -->
+    <!-- 英語セクション (English) -->
+    <!---------------------------------------------------------------- -->
+    <div id="lang-en" class="lang-section">
+        <!-- 1. プライバシーポリシー (英語) -->
+        <div id="privacy-content-en" class="tab-content active">
+            <p>This Privacy Policy describes how user information is handled in the mobile application "Marupeke Game" (hereinafter referred to as the "App").</p>
+
+            <h2>1. Information Collection</h2>
+            <p>The App does not collect or transmit any personal information of users (such as name, address, phone number, or email address). All gameplay data, including game progress, match results, and lives, is stored exclusively on the user's local device and is never transmitted externally. Furthermore, the App does not collect or use device identifiers such as Advertising Identifiers (IDFA) or in-app activity history (such as gameplay content or movement history).</p>
+
+            <h2>2. Purpose of Use</h2>
+            <p>The App handles minimal necessary information solely for the following purposes:</p>
+            <ul>
+                <li>Transmission of technical data to the ad network provider (Google) for ad delivery (limited to non-personalized ads).</li>
+                <li>Local storage of data required for app operation (language settings, BGM, match results, lives, etc.) strictly within the device.</li>
+            </ul>
+
+            <h2>3. No Tracking Policy</h2>
+            <p>The App does not acquire or use Advertising Identifiers (IDFA) in any way. It does not display App Tracking Transparency (ATT) permission request dialogs. All advertisements are delivered exclusively as Non-Personalized Ads (NPA), which do not utilize user interests, preferences, or behavioral history.</p>
+
+            <h2>4. Ad Delivery (External Transmission)</h2>
+            <p>The App integrates a third-party advertising service, "Google AdMob". All ad requests are subject to Non-Personalized Ads (NPA) settings, and cross-app tracking or behavior history collection for ad targeting is not performed. Technical information related to internet connection (such as IP addresses) may be transmitted to ad network providers for ad display and delivery. Features related to ad performance measurement or fraud prevention (such as SKAdNetwork) do not use Advertising Identifiers (IDFA).</p>
+            <p>For details on how externally transmitted information is collected and processed, please refer to Google's policy page below:<br>
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google Policies & Terms (External Site) ↗</a></p>
+
+            <h2>5. Applicable Regions</h2>
+            <p>The App is distributed in four countries: Japan, the United States, Canada, and Australia. Since the European Economic Area (EEA) and other regions are not targeted, consent management processes for EU users are not implemented. The App respects the legal rights of users in the aforementioned four countries and complies with applicable laws and regulations (including mandatory laws) where applicable. This policy is reviewed and updated periodically in response to changes in legal systems across jurisdictions.</p>
+
+            <h2>6. Disclaimer</h2>
+            <p>The developer assumes no responsibility for any trouble, loss, or damage caused by the use of the App, except where required by law.</p>
+
+            <h2>7. Contact Information</h2>
+            <p>For inquiries regarding the handling of user information in the App, please contact us at the address below:</p>
+            <div class="contact-box">
+                <p><strong>Developer:</strong> shinzan35</p>
+                <p><strong>Email:</strong> <a href="mailto:shinzan35@ymail.ne.jp">shinzan35@ymail.ne.jp</a></p>
+            </div>
+
+            <div class="date-info">Effective Date: August 1, 2026 / Last Revised: September 5, 2026</div>
+        </div>
+
+        <!-- 2. 利用規約 (英語) -->
+        <div id="terms-content-en" class="tab-content">
+            <p>These Terms of Service (hereinafter referred to as the "Terms") set forth the conditions for using the game application "Marupeke Game" (hereinafter referred to as the "App") provided by developer "shinzan35" (hereinafter referred to as the "Developer"). By using the App, users agree to be bound by these Terms.</p>
+
+            <h2>Article 1: User Responsibilities</h2>
+            <ul>
+                <li>All intellectual property rights regarding contents within the App (images, music, audio, text, etc.) belong to the Developer or legitimate rights holders. Users must not reproduce, copy, modify, or redistribute them without authorization.</li>
+                <li>Users must not engage in acts that violate laws, public order and morals, or these Terms, nor acts that disadvantage or harm other users or third parties (including app tampering, cheating, and unauthorized access).</li>
+                <li>All game data, match results, lives, and other data are stored exclusively on the local device. The Developer bears no responsibility if data becomes unavailable due to device failure, loss, replacement, app uninstallation, OS updates, or similar events.</li>
+            </ul>
+
+            <h2>Article 2: Disclaimer</h2>
+            <ul>
+                <li>The App is provided on an "as is" and "as available" basis, without warranties of any kind, whether express or implied, including but not limited to operational completeness, accuracy, fitness for a particular purpose, or continuous availability.</li>
+                <li>To the maximum extent permitted by law, the Developer shall not be liable for any direct, indirect, special, consequential, or punitive damages, or loss of profits arising out of the use of the App. However, this does not apply in cases of willful misconduct or gross negligence by the Developer, or where consumer protection under mandatory laws applies.</li>
+            </ul>
+
+            <h2>Article 3: Governing Law, Jurisdiction, and Dispute Resolution</h2>
+            <ul>
+                <li>These Terms shall be governed by and construed in accordance with the laws of Japan.</li>
+                <li>Any legal disputes arising from or related to the App shall be subject to the exclusive jurisdiction of the Tokyo District Court as the court of first instance.</li>
+                <li>In the event of a dispute with a user, the Developer may attempt resolution through conciliation or arbitration bodies within Japan prior to initiating legal proceedings.</li>
+                <li>Notwithstanding the foregoing provisions, if mandatory laws (including consumer protection laws) of the country or region where the user resides apply, the Developer shall respect such provisions and not deprive users of their legal rights.</li>
+            </ul>
+
+            <h2>Article 4: Inquiries</h2>
+            <p>For inquiries regarding these Terms, please contact us at the address below:</p>
+            <div class="contact-box">
+                <p><strong>Developer:</strong> shinzan35</p>
+                <p><strong>Email:</strong> <a href="mailto:shinzan35@ymail.ne.jp">shinzan35@ymail.ne.jp</a></p>
+            </div>
+
+            <div class="date-info">Effective Date: September 5, 2026</div>
+        </div>
+    </div>
+
 </div>
+
+<script>
+    let currentLang = 'ja';
+    let currentTab = 'privacy';
+
+    function switchLang(lang) {
+        currentLang = lang;
+        
+        // 言語ボタンの見た目切替
+        document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+        // 言語セクションの切替
+        document.getElementById('lang-ja').classList.toggle('active', lang === 'ja');
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+
+        // サブタイトルとタブのテキスト切替
+        if (lang === 'ja') {
+            document.getElementById('main-subtitle').textContent = 'プライバシーポリシー ＆ 利用規約';
+            document.getElementById('tab-btn-privacy').textContent = 'プライバシーポリシー';
+            document.getElementById('tab-btn-terms').textContent = '利用規約';
+        } else {
+            document.getElementById('main-subtitle').textContent = 'Privacy Policy & Terms of Service';
+            document.getElementById('tab-btn-privacy').textContent = 'Privacy Policy';
+            document.getElementById('tab-btn-terms').textContent = 'Terms of Service';
+        }
+
+        updateTabDisplay();
+    }
+
+    function switchTab(tab) {
+        currentTab = tab;
+        
+        // タブボタンの見た目切替
+        document.getElementById('tab-btn-privacy').classList.toggle('active', tab === 'privacy');
+        document.getElementById('tab-btn-terms').classList.toggle('active', tab === 'terms');
+
+        updateTabDisplay();
+    }
+
+    function updateTabDisplay() {
+        // 全てのコンテンツのactiveを外す
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+
+        // 現在選択されている言語とタブの組み合わせのみactiveにする
+        const targetId = `${currentTab}-content-${currentLang}`;
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+            targetEl.classList.add('active');
+        }
+    }
+</script>
 
 </body>
 </html>
