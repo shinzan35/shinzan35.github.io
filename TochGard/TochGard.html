@@ -6,209 +6,322 @@
     <title>TouchGuard - プライバシーポリシー & 利用規約</title>
     <style>
         :root {
-            --primary-color: #007aff;
-            --text-color: #333333;
             --bg-color: #f9f9fb;
             --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-secondary: #666666;
+            --accent-color: #007aff;
             --border-color: #e5e5ea;
         }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
             margin: 0;
             padding: 20px;
         }
-
         .container {
             max-width: 800px;
             margin: 0 auto;
             background: var(--card-bg);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-
-        h1 {
-            font-size: 1.8rem;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-top: 0;
+        .lang-switch {
+            text-align: right;
             margin-bottom: 20px;
-            color: var(--primary-color);
         }
-
-        h2 {
-            font-size: 1.3rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-        }
-
-        .section {
-            margin-bottom: 25px;
-        }
-
-        .section h3 {
-            font-size: 1.05rem;
+        .lang-switch button {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
             font-weight: bold;
-            margin-bottom: 8px;
-            color: #111;
+            color: var(--accent-color);
         }
-
-        p, ul {
-            font-size: 0.95rem;
-            color: #555;
-            margin-top: 0;
-            margin-bottom: 10px;
+        .lang-switch button:hover {
+            background: var(--accent-color);
+            color: white;
         }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 6px;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid var(--border-color);
-            margin: 25px 0;
-        }
-
-        .divider {
-            height: 1px;
-            background-color: var(--border-color);
-            margin: 20px 0;
-        }
-
         .tab-menu {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 30px;
         }
-
-        .tab-menu a {
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            background-color: #eee;
-            color: #333;
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            background: none;
+            border: none;
+            font-size: 16px;
             font-weight: bold;
-            font-size: 0.9rem;
-            transition: background-color 0.2s;
+            color: var(--text-secondary);
+            cursor: pointer;
         }
-
-        .tab-menu a:hover {
-            background-color: var(--primary-color);
-            color: white;
+        .tab-btn.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            margin-bottom: -2px;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .date {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        .intro {
+            background: #f1f1f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        h2 {
+            font-size: 18px;
+            margin-top: 25px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+        p {
+            font-size: 14px;
+            white-space: pre-line;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- ナビゲーション切り替え用メニュー（任意） -->
-        <div class="tab-menu">
-            <a href="#privacy">プライバシーポリシー</a>
-            <a href="#terms">利用規約</a>
-        </div>
-
-        <!-- プライバシーポリシー -->
-        <section id="privacy" style="margin-bottom: 50px;">
-            <h1>プライバシーポリシー</h1>
-            <p>当アプリ「TouchGuard」（以下、「弊社」といいます。）における利用者情報の取扱いについて定めるものです。当アプリをご利用いただく前に、本ポリシーをよくお読みください。</p>
-            
-            <div class="divider"></div>
-
-            <div class="section">
-                <h3>1. 収集する情報および利用目的</h3>
-                <p>弊社は、ユーザーの利便性向上やアプリの品質改善を目的として、匿名化された利用状況データやクラッシュレポートなどを収集する場合があります。これらの情報は個人を特定するものではありません。</p>
-            </div>
-
-            <div class="section">
-                <h3>2. 第三者提供の制限</h3>
-                <p>当アプリは、法令に基づく場合を除き、ユーザーの同意を得ることなく、収集した情報を第三者に提供・開示することはありません。</p>
-            </div>
-
-            <div class="section">
-                <h3>3. 免責事項（Disclaimer）</h3>
-                <ul>
-                    <li>当アプリの利用により生じたいかなる損害（端末の故障、誤作動、データ損失、通信料の発生等）について、開発者は一切の責任を負いません。</li>
-                    <li>YouTube等の外部サービスへのアクセスや動画再生機能に関連して発生したトラブルや仕様変更について、当アプリは一切関与せず、責任を負いません。</li>
-                    <li>当アプリは現状有姿のまま提供されるものであり、その完全性、正確性、有用性等についていかなる保証も行いません。</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h3>4. 外部サービス・リンクについて</h3>
-                <p>当アプリ内からリンクする外部サイトやサービスにおけるプライバシーの取扱いや安全性について、当アプリは責任を負いません。各外部サービスの利用規約や方針をご確認ください。</p>
-            </div>
-
-            <div class="section">
-                <h3>5. プライバシーポリシーの変更</h3>
-                <p>当アプリは、法令の改定やサービスの改善に伴い、本ポリシーを予告なく変更することがあります。変更後のプライバシーポリシーは、アプリ内または関連ページに掲載された時点より効力を生じるものとします。</p>
-            </div>
-
-            <div class="section">
-                <h3>6. お問い合わせ窓口</h3>
-                <p>本ポリシーに関するお問い合わせやご意見は、設定画面に記載のお問い合わせ窓口よりご連絡ください。</p>
-            </div>
-        </section>
-
-        <hr style="border-top: 2px dashed #ddd; margin: 40px 0;">
-
-        <!-- 利用規約 -->
-        <section id="terms">
-            <h1>利用規約</h1>
-            <p>当アプリ「TouchGuard」（以下、「弊社」といいます。）の利用条件を定めるものです。ユーザーは、当アプリをダウンロードし、インストールまたは利用することにより、本規約に同意したものとみなされます。</p>
-            
-            <div class="divider"></div>
-
-            <div class="section">
-                <h3>1. サービスの提供と変更</h3>
-                <p>当アプリは、ユーザーに事前の通知なく、いつでもサービスの内容を変更、停止、または終了することができるものとします。</p>
-            </div>
-
-            <div class="section">
-                <h3>2. 禁止事項</h3>
-                <p>ユーザーは、当アプリの利用にあたり、以下の行為を行ってはなりません。</p>
-                <ul>
-                    <li>当アプリを改変、リバースエンジニアリング、逆コンパイル、または逆アセンブルする行為。</li>
-                    <li>当アプリの運営を妨害する行為、または他者の利用を妨害する行為。</li>
-                    <li>法令または公序良俗に反する行為。</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h3>3. 免責事項（Disclaimer）</h3>
-                <ul>
-                    <li>当アプリは「現状有姿」で提供されます。開発者は、当アプリの動作、機能適合性、エラー不存在について一切の保証を行いません。</li>
-                    <li>当アプリの使用に関連して生じた損害（間接的、付随的を含む）について、開発者は責任を負いません。</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h3>4. 外部サービスとの連携</h3>
-                <p>当アプリはYouTube等の外部サービスと連携しますが、これらの外部サービスの利用規約や仕様変更によって生じた不具合について、弊社は責任を負いません。</p>
-            </div>
-
-            <div class="section">
-                <h3>5. 規約の変更</h3>
-                <p>開発者は、必要に応じて本規約を変更できるものとします。変更後の規約は、当アプリ内に掲載された時点より効力を生じるものとします。</p>
-            </div>
-
-            <div class="section">
-                <h3>6. 準拠法および管轄裁判所</h3>
-                <p>本規約の解釈および適用は、日本法に準拠するものとします。当アプリに関連して紛争が生じた場合は、開発者の所在地を管轄する裁判所を専属的合意管轄裁判所とします。</p>
-            </div>
-        </section>
+<div class="container">
+    <!-- 言語切り替えボタン -->
+    <div class="lang-switch">
+        <button onclick="toggleLanguage()" id="langBtn">English</button>
     </div>
+
+    <!-- タブ切り替え（プライバシーポリシー / 利用規約） -->
+    <div class="tab-menu">
+        <button class="tab-btn active" onclick="switchTab('privacy')" id="tabPrivacyBtn">プライバシーポリシー</button>
+        <button class="tab-btn" onclick="switchTab('terms')" id="tabTermsBtn">利用規約</button>
+    </div>
+
+    <!-- 1. プライバシーポリシー (日本語) -->
+    <div id="privacy-ja" class="content-section active">
+        <h1>プライバシーポリシー</h1>
+        <div class="date">制定日：2026年8月1日／改定日：2026年9月5日</div>
+        <div class="intro">当アプリ「TouchGuard」（以下、「当社」といいます。）における利用者情報の取扱いについて定めるものです。当アプリをご利用いただく前に、本ポリシーをよくお読みください。</div>
+        
+        <h2>1. 保存するデータとその場所（端末内のみ）</h2>
+        <p>当アプリは、お気に入り（ブックマーク）および視聴履歴（URL・ページタイトル・日時）を、端末内（アプリローカル領域）にのみ保存します。これらのデータが外部サーバーへアップロード・収集・送信されることはありません。
+なお、当アプリで再生する動画は YouTube 等の外部サービスからストリーミングされるものであり、当アプリ自体が写真・動画コンテンツを取得・加工・保存する機能は持ちません。</p>
+
+        <h2>2. 広告配信について（非パーソナライズ広告に限定）</h2>
+        <p>当アプリは、現時点で広告配信SDKを組み込んでおらず、広告枠はダミー表示です。将来 Google AdMob による広告配信を導入する場合にも、「非パーソナライズ広告」に限定して行います。
+・IDFA（広告識別子）の取得は行いません。
+・ATT（アプリトラッキング透過性）ダイアログの表示は行いません。
+・アプリやサイトを横断したクロスアプリ追跡は一切行いません。</p>
+
+        <h2>3. データの保持について（サーバーにデータを保持しない）</h2>
+        <p>当アプリはサーバーにデータを保持しません。お気に入り等のデータは端末内（アプリローカル領域）にのみ保存されるため、アプリを削除することでデータは消去されます。</p>
+
+        <h2>4. 収集する情報および利用目的</h2>
+        <p>当アプリは、分析SDK・クラッシュレポートSDK等を組み込んでおらず、利用状況データを外部へ送信しません。</p>
+
+        <h2>5. 第三者提供の制限</h2>
+        <p>当アプリは、法令に基づく場合を除き、ユーザーの同意を得ることなく、収集した情報を第三者に提供・開示することはありません。</p>
+
+        <h2>6. 免責事項（Disclaimer）</h2>
+        <p>・当アプリの利用により生じたいかなる損害（端末の故障、誤作動、データ損失、通信料の発生等）について、開発者は一切の責任を負いません。
+・外部サービスへのアクセスや動画再生機能に関連して発生したトラブルや仕様変更について、当アプリは一切関与せず、責任を負いません。
+・当アプリは現状有姿のまま提供されるものであり、その完全性、正確性、有用性等についていかなる保証も行いません。</p>
+
+        <h2>7. プライバシーポリシーの変更</h2>
+        <p>当アプリは、法令の改定やサービスの改善に伴い、本ポリシーを予告なく変更することがあります。変更後のプライバシーポリシーは、アプリ内または関連ページに掲載された時点より効力を生じるものとします。</p>
+
+        <h2>8. お問い合わせ</h2>
+        <p>本ポリシーに関するお問い合わせやご意見は、以下の窓口までご連絡ください。
+メールアドレス: shinzan35@ymail.ne.jp</p>
+
+        <div class="footer">© 2026 運営者 / 開発者 shinzan35</div>
+    </div>
+
+    <!-- 1. Privacy Policy (English) -->
+    <div id="privacy-en" class="content-section">
+        <h1>Privacy Policy</h1>
+        <div class="date">Effective date: August 1, 2026 / Revised: September 5, 2026</div>
+        <div class="intro">This policy sets out how user information is handled in the app "TouchGuard" (referred to as "we"). Please read this policy carefully before using the app.</div>
+        
+        <h2>1. Data Stored and Its Location (Device Only)</h2>
+        <p>This app stores favorites (bookmarks) and viewing history (URL, page title, and date/time) only on your device (local app storage). These data are never uploaded to, collected by, or sent to external servers.
+Videos played in this app are streamed from external services such as YouTube; the app itself has no feature to obtain, process, or store photo or video content.</p>
+
+        <h2>2. Advertising (Non-Personalized Ads Only)</h2>
+        <p>The app does not currently integrate any ad-delivery SDK, and the ad area is a dummy placeholder. Even when advertising through Google AdMob is introduced in the future, it will be limited to non-personalized ads.
+- We do not obtain the advertising identifier (IDFA).
+- We do not display the App Tracking Transparency (ATT) prompt.
+- We do not track users across apps or websites in any way.</p>
+
+        <h2>3. Data Retention (No Server-Side Data Storage)</h2>
+        <p>This app does not store any data on our servers. Data such as favorites is stored only on your device (local app storage), so it is erased when the app is deleted.</p>
+
+        <h2>4. Information We Collect and How We Use It</h2>
+        <p>The app does not integrate any analytics or crash-reporting SDKs, and does not send usage data to external parties.</p>
+
+        <h2>5. Restrictions on Providing Information to Third Parties</h2>
+        <p>Except as required by law, we will not provide or disclose collected information to any third party without the user's consent.</p>
+
+        <h2>6. Disclaimer</h2>
+        <p>- We assume no responsibility for any damage arising from the use of this app (including device failure, malfunction, data loss, or communication charges).
+- The app is not involved in, and assumes no responsibility for, troubles or specification changes related to access to external services or video playback.
+- The app is provided "as is" with no warranty of any kind as to its completeness, accuracy, or usefulness.</p>
+
+        <h2>7. Changes to This Privacy Policy</h2>
+        <p>We may change this policy without prior notice due to legal revisions or service improvements. The revised policy takes effect when posted within the app or on the related page.</p>
+
+        <h2>8. Contact</h2>
+        <p>For inquiries or feedback regarding this policy, please contact us at:
+Email: shinzan35@ymail.ne.jp</p>
+
+        <div class="footer">© 2026 Operator / Developer shinzan35</div>
+    </div>
+
+    <!-- 2. 利用規約 (日本語) -->
+    <div id="terms-ja" class="content-section">
+        <h1>利用規約</h1>
+        <div class="date">改定日：2026年9月5日</div>
+        <div class="intro">当アプリ「TouchGuard」（以下、「当社」といいます。）の利用条件を定めるものです。ユーザーは、当アプリをダウンロードし、インストールまたは利用することにより、本規約に同意したものとみなされます。</div>
+
+        <h2>1. サービスの提供と変更</h2>
+        <p>当アプリは、ユーザーに事前の通知なく、いつでもサービスの内容を変更、停止、または終了することができるものとします。</p>
+
+        <h2>2. トラッキングを行わない仕様</h2>
+        <p>当アプリは、広告または分析を目的とした、アプリやサイトを横断・縦断したユーザーの追跡（トラッキング）を行いません。ATTダイアログの表示やIDFAの取得も行いません。</p>
+
+        <h2>3. 禁止事項</h2>
+        <p>ユーザーは、当アプリの利用にあたり、以下の行為を行ってはなりません。
+・当アプリを改変、リバースエンジニアリング、逆コンパイル、または逆アセンブルする行為。
+・当アプリの運営を妨害する行為、または他者の利用を妨害する行為。
+・法令または公序良俗に反する行為。</p>
+
+        <h2>4. 免責事項（Disclaimer）</h2>
+        <p>・当アプリは「現状有姿」で提供されます。当社は、当アプリの動作、機能適合性、エラー不存在について一切の保証を行いません。
+・当アプリの使用に関連して生じた損害（間接的、付随的を含む）について、当社は責任を負いません。</p>
+
+        <h2>5. 外部サービスとの連携</h2>
+        <p>当アプリは、動画再生のため YouTube 等の外部サービスと接続します。また、OS、アプリストア等の第三者サービスと連携する場合があります。これら第三者サービスの仕様変更、障害、停止等に起因して生じた損害について、当社は責任を負いません。</p>
+
+        <h2>6. 規約の変更</h2>
+        <p>当社は、必要に応じて本規約を変更することがあります。重要な変更を行う場合は、アプリ内または適切な方法により事前に通知または公表します。変更後も本アプリの利用を継続した場合は、変更後の規約に同意したものとみなされます。</p>
+
+        <h2>7. 準拠法および管轄裁判所・紛争解決</h2>
+        <p>・本規約の解釈にあたっては、日本法を準拠法とします。
+・本アプリに起因または関連する紛争については、適用法令が認める範囲において、東京地方裁判所を第一審の専属的合意管轄裁判所とします。
+・なお、国際的な紛争または当事者間の合意がある場合、東京における日本商事仲裁協会（JCAA）の仲裁規則に基づく仲裁によってこれを解決することができるものとします。
+・ただし、本条は、ユーザーが居住する国・地域の強行法規によって認められる消費者保護に関する法的な管轄権や権利を排除するものではありません。</p>
+
+        <h2>8. お問い合わせ</h2>
+        <p>本規約に関するお問い合わせは、以下の窓口までご連絡ください。
+メールアドレス: shinzan35@ymail.ne.jp</p>
+
+        <div class="footer">© 2026 運営者 / 開発者 shinzan35</div>
+    </div>
+
+    <!-- 2. Terms of Service (English) -->
+    <div id="terms-en" class="content-section">
+        <h1>Terms of Service</h1>
+        <div class="date">Revised: September 5, 2026</div>
+        <div class="intro">These terms set out the conditions for using the app "TouchGuard" (referred to as "we"). By downloading, installing, or using the app, the user is deemed to have agreed to these terms.</div>
+
+        <h2>1. Provision and Changes of the Service</h2>
+        <p>We may change, suspend, or discontinue the service at any time without prior notice to the user.</p>
+
+        <h2>2. No Tracking</h2>
+        <p>This app does not track users across apps or websites for advertising or analytics purposes. We do not display the ATT prompt or obtain the IDFA.</p>
+
+        <h2>3. Prohibited Acts</h2>
+        <p>When using the app, the user must not engage in any of the following acts:
+- Modifying, reverse engineering, decompiling, or disassembling the app.
+- Interfering with the operation of the app or with other users' use of the app.
+- Acts that violate laws or public order and morals.</p>
+
+        <h2>4. Disclaimer</h2>
+        <p>- The app is provided "as is." We make no warranties whatsoever regarding its operation, fitness for a particular purpose, or absence of errors.
+- We assume no responsibility for any damages (including indirect or consequential damages) arising in connection with the use of the app.</p>
+
+        <h2>5. Integration with Third-Party Services</h2>
+        <p>This app connects to external services such as YouTube for video playback, and may integrate with third-party services including the operating system and app stores. We assume no responsibility for damages arising from specification changes, failures, suspension, or similar events of these third-party services.</p>
+
+        <h2>6. Changes to These Terms</h2>
+        <p>We may change these terms as necessary. In the case of material changes, we will notify you in advance within the app or by an appropriate means. If you continue to use the app after such changes take effect, you are deemed to have agreed to the revised terms.</p>
+
+        <h2>7. Governing Law, Jurisdiction, and Dispute Resolution</h2>
+        <p>- Japanese law applies to the interpretation of these terms.
+- For disputes arising from or in connection with this app, the Tokyo District Court shall be the court of exclusive agreed jurisdiction in the first instance, to the extent permitted by applicable laws and regulations.
+- In addition, in the case of international disputes or where the parties so agree, the dispute may be resolved by arbitration in Tokyo under the arbitration rules of the Japan Commercial Arbitration Association (JCAA).
+- However, this article does not exclude any legal jurisdiction or rights concerning consumer protection recognized under the mandatory laws of the country or region where the user resides.</p>
+
+        <h2>8. Contact</h2>
+        <p>For inquiries regarding these terms, please contact us at:
+Email: shinzan35@ymail.ne.jp</p>
+
+        <div class="footer">© 2026 Operator / Developer shinzan35</div>
+    </div>
+</div>
+
+<script>
+    let currentLang = 'ja';
+    let currentTab = 'privacy';
+
+    function updateView() {
+        // すべてのセクションを非表示
+        document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+        // 現在のタブと言語に対応するセクションを表示
+        const targetId = currentTab + '-' + currentLang;
+        document.getElementById(targetId).classList.add('active');
+
+        // タブのactive状態
+        if (currentTab === 'privacy') {
+            document.getElementById('tabPrivacyBtn').classList.add('active');
+        } else {
+            document.getElementById('tabTermsBtn').classList.add('active');
+        }
+
+        // ボタンのラベル更新
+        document.getElementById('langBtn').innerText = currentLang === 'ja' ? 'English' : '日本語';
+        document.getElementById('tabPrivacyBtn').innerText = currentLang === 'ja' ? 'プライバシーポリシー' : 'Privacy Policy';
+        document.getElementById('tabTermsBtn').innerText = currentLang === 'ja' ? '利用規約' : 'Terms of Service';
+    }
+
+    function switchTab(tab) {
+        currentTab = tab;
+        updateView();
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'ja' ? 'en' : 'ja';
+        updateView();
+    }
+</script>
 
 </body>
 </html>
