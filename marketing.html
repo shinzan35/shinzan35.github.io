@@ -1,11 +1,227 @@
 <!DOCTYPE html>
-<html >
+<html lang="ja">
 <head>
-  <title>マーケティング</title>
-  </head>
-  <body>
-        <h2>準備中</h2>
-        <p><br>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps & YouTube ポータル</title>
+    <style>
+        /* 全体設定 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        header p {
+            margin: 0.8rem 0 0 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* セクション共通 */
+        section {
+            background: #ffffff;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: #1e3c72;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        /* グリッドレイアウト */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* カードデザイン */
+        .card {
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 1.5rem;
+            background: #fff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin: 0 0 0.8rem 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0 0 1.2rem 0;
+        }
+
+        /* リンクボタン風デザイン */
+        .btn {
+            display: inline-block;
+            background-color: #007aff;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            text-align: center;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-youtube {
+            background-color: #ff0000;
+        }
+
+        .btn-youtube:hover {
+            background-color: #cc0000;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>iOS Apps & YouTube Portfolio</h1>
+        <p>開発したiOSアプリケーションと、街や歴史の記録をつづるYouTube動画の総合サイト</p>
+    </header>
+
+    <main>
+        <!-- アプリ紹介セクション -->
+        <section>
+            <h2>📱 アプリケーション一覧</h2>
+            <div class="grid-container">
+                
+                <div class="card">
+                    <div>
+                        <h3>TouchGuard</h3>
+                        <p>誤操作を防ぎ、安心して画面を扱えるようにサポートする便利なiOSアプリ。対応国現在アメリカカナダのみ</p>
+                    </div>
+                    <a href="https://apps.apple.com/app/touchguard/id680022639" target="_blank" class="btn">App Storeで見る</a>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <h3>丸ペケゲーム</h3>
+                        <p>親しみやすいルールで手軽に楽しめる、こだわりのボードゲームアプリ。</p>
+                    </div>
+                    <a href="https://apps.apple.com/app/%E4%B8%B8%E3%83%9A%E3%82%B1%E3%82%B2%E3%83%BC%E3%83%A0/id6797238685" target="_blank" class="btn">App Storeで見る</a>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <h3>setsuyakun</h3>
+                        <p>写真や動画のファイルサイズを賢く軽量化し、デバイスのストレージを最適化するアプリ。</p>
+                    </div>
+                    <a href="https://apps.apple.com/app/setsuyakun/id6806707297" target="_blank" class="btn">App Storeで見る</a>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <h3>カレンダー 1</h3>
+                        <p>日々の思い出や記録を写真やノートと一緒にシンプルかつスマートに残せるカレンダーアプリ。</p>
+                    </div>
+                    <a href="https://apps.apple.com/app/%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC-1/id6777579425" target="_blank" class="btn">App Storeで見る</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- YouTube動画セクション（先ほどの修正した紹介文を反映） -->
+        <section>
+            <h2>🎥 YouTube 動画・エピソード</h2>
+            <div class="grid-container">
+                
+                <div class="card">
+                    <div>
+                        <h3>おせち DIY</h3>
+                        <p>元和食職人の血が騒ぐ！？お家で作る本格おせちの製作ドキュメンタリーをお届けします。</p>
+                    </div>
+                    <a href="https://youtu.be/7kE7UMYkNjk" target="_blank" class="btn btn-youtube">YouTubeで視聴</a>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <h3>お正月（食卓）</h3>
+                        <p>年の初めから、ちゃっかり美味しいものを並べてしまいました。食べる直前の最高の瞬間を切り取ったおうちの平和な正月風景。</p>
+                    </div>
+                    <a href="https://youtu.be/Qi0vPzXQ6bA" target="_blank" class="btn btn-youtube">YouTubeで視聴</a>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <h3>滋賀県近江八幡堀屋形船</h3>
+                        <p>豊臣秀次が開いた城下町の歴史を今に伝える八幡堀。水面すれすれの視点から移りゆく美しい町並みと舟旅の風情をお届けします。</p>
+                    </div>
+                    <a href="https://youtu.be/HmQgTaBv2mM" target="_blank" class="btn btn-youtube">YouTubeで視聴</a>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <h3>京都祇園 新山本店</h3>
+                        <p>かつて界隈で愛された伝説の名店「新山」。当時を知る人ぞ知る記憶や、華やかな祇園の雰囲気をたどる記録映像。</p>
+                    </div>
+                    <a href="https://youtu.be/2uQG5O5r69A" target="_blank" class="btn btn-youtube">YouTubeで視聴</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 App & YouTube Portfolio All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>
