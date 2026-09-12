@@ -18,7 +18,7 @@
         header {
             background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
-            padding: 3rem 1rem;
+            padding: 2.5rem 1rem 1.5rem 1rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             position: relative;
@@ -51,15 +51,63 @@
         }
 
         header p {
-            margin: 0.8rem 0 0 0;
+            margin: 0.8rem 0 1.5rem 0;
             font-size: 1rem;
             opacity: 0.9;
+        }
+
+        /* エクセル風タブのコンテナ */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 0 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* エクセル風タブボタン */
+        .tab-btn {
+            background-color: #d1d8e0;
+            color: #4b6584;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            transition: background 0.2s, color 0.2s, transform 0.1s;
+            box-shadow: inset 0 -2px 4px rgba(0,0,0,0.05);
+        }
+
+        .tab-btn:hover {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        /* アクティブなタブ（選択中のエクセルシート風） */
+        .tab-btn.active {
+            background-color: #ffffff;
+            color: #1e3c72;
+            box-shadow: 0 -3px 6px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
         }
 
         main {
             max-width: 1000px;
             margin: 2.5rem auto;
             padding: 0 1.5rem;
+        }
+
+        /* タブコンテンツの表示・非表示 */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active-content {
+            display: block;
         }
 
         /* セクション共通 */
@@ -171,215 +219,255 @@
             <span class="ja-block">開発したiOSアプリケーションと、街や歴史の記録をつづるYouTube動画の総合サイト</span>
             <span class="en-block">A collection of iOS applications and YouTube videos documenting cities and history.</span>
         </p>
+
+        <!-- エクセル風タブバー -->
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('tab-apps', this)">
+                <span class="ja-block">📱 アプリ</span>
+                <span class="en-block">📱 Apps</span>
+            </button>
+            <button class="tab-btn" onclick="switchTab('tab-youtube', this)">
+                <span class="ja-block">🎥 マイYouTube</span>
+                <span class="en-block">🎥 My YouTube</span>
+            </button>
+            <button class="tab-btn" onclick="switchTab('tab-recommended', this)">
+                <span class="ja-block">📺 おすすめチャンネル</span>
+                <span class="en-block">📺 Recommended</span>
+            </button>
+        </div>
     </header>
 
     <main>
-        <!-- アプリ紹介セクション -->
-        <section>
-            <h2>
-                <span class="ja-block">📱 アプリケーション一覧(現在アイホンのみ対応です)</span>
-                <span class="en-block">📱 iOS Applications (Currently for iPhone only)</span>
-            </h2>
-            <div class="grid-container">
-                
-                <div class="card">
-                    <div>
-                        <h3>TouchGuard</h3>
-                        <p>
-                            <span class="ja-block">誤操作を防ぎ、動画画面を扱えるようにサポートする便利なiOSアプリ。</span>
-                            <span class="en-block">A handy iOS app designed to prevent accidental touches and safely support your screen experience.</span>
-                        </p>
+        <!-- 【タブ1】アプリ紹介セクション -->
+        <div id="tab-apps" class="tab-content active-content">
+            <section>
+                <h2>
+                    <span class="ja-block">📱 アプリケーション一覧(現在アイホンのみ対応です)</span>
+                    <span class="en-block">📱 iOS Applications (Currently for iPhone only)</span>
+                </h2>
+                <div class="grid-container">
+                    
+                    <div class="card">
+                        <div>
+                            <h3>TouchGuard</h3>
+                            <p>
+                                <span class="ja-block">誤操作を防ぎ、動画画面を扱えるようにサポートする便利なiOSアプリ。</span>
+                                <span class="en-block">A handy iOS app designed to prevent accidental touches and safely support your screen experience.</span>
+                            </p>
+                        </div>
+                        <a href="https://apps.apple.com/app/touchguard/id680022639" target="_blank" class="btn">
+                            <span class="ja-block">App Storeで見る</span>
+                            <span class="en-block">View on App Store</span>
+                        </a>
                     </div>
-                    <a href="https://apps.apple.com/app/touchguard/id680022639" target="_blank" class="btn">
-                        <span class="ja-block">App Storeで見る</span>
-                        <span class="en-block">View on App Store</span>
-                    </a>
-                </div>
 
-                <div class="card">
-                    <div>
-                        <h3>
-                            <span class="ja-block">丸ペケゲーム</span>
-                            <span class="en-block">MaruPeke Game</span>
-                        </h3>
-                        <p>
-                            <span class="ja-block">親しみやすいルールで手軽に楽しめる、こだわりのボードゲームアプリ。</span>
-                            <span class="en-block">A carefully crafted board game app featuring friendly and accessible rules for casual fun.</span>
-                        </p>
+                    <div class="card">
+                        <div>
+                            <h3>
+                                <span class="ja-block">丸ペケゲーム</span>
+                                <span class="en-block">MaruPeke Game</span>
+                            </h3>
+                            <p>
+                                <span class="ja-block">親しみやすいルールで手軽に楽しめる、こだわりのボードゲームアプリ。</span>
+                                <span class="en-block">A carefully crafted board game app featuring friendly and accessible rules for casual fun.</span>
+                            </p>
+                        </div>
+                        <a href="https://apps.apple.com/app/%E4%B8%B8%E3%83%9A%E3%82%B1%E3%82%B2%E3%83%BC%E3%83%A0/id6797238685" target="_blank" class="btn">
+                            <span class="ja-block">App Storeで見る</span>
+                            <span class="en-block">View on App Store</span>
+                        </a>
                     </div>
-                    <a href="https://apps.apple.com/app/%E4%B8%B8%E3%83%9A%E3%82%B1%E3%82%B2%E3%83%BC%E3%83%A0/id6797238685" target="_blank" class="btn">
-                        <span class="ja-block">App Storeで見る</span>
-                        <span class="en-block">View on App Store</span>
-                    </a>
-                </div>
 
-                <div class="card">
-                    <div>
-                        <h3>setsuyakun</h3>
-                        <p>
-                            <span class="ja-block">写真や動画のファイルサイズを賢く軽量化し、デバイスのストレージを最適化するアプリ。</span>
-                            <span class="en-block">A smart optimization app that reduces photo and video file sizes to save device storage.</span>
-                        </p>
+                    <div class="card">
+                        <div>
+                            <h3>setsuyakun</h3>
+                            <p>
+                                <span class="ja-block">写真や動画のファイルサイズを賢く軽量化し、デバイスのストレージを最適化するアプリ。</span>
+                                <span class="en-block">A smart optimization app that reduces photo and video file sizes to save device storage.</span>
+                            </p>
+                        </div>
+                        <a href="https://apps.apple.com/app/setsuyakun/id6806707297" target="_blank" class="btn">
+                            <span class="ja-block">App Storeで見る</span>
+                            <span class="en-block">View on App Store</span>
+                        </a>
                     </div>
-                    <a href="https://apps.apple.com/app/setsuyakun/id6806707297" target="_blank" class="btn">
-                        <span class="ja-block">App Storeで見る</span>
-                        <span class="en-block">View on App Store</span>
-                    </a>
-                </div>
 
-                <div class="card">
-                    <div>
-                        <h3>
-                            <span class="ja-block">カレンダー 1</span>
-                            <span class="en-block">Calendar 1</span>
-                        </h3>
-                        <p>
-                            <span class="ja-block">日々の思い出や記録を写真やノートと一緒にシンプルかつスマートに残せるカレンダーアプリ。</span>
-                            <span class="en-block">A simple and smart calendar app to seamlessly capture daily memories and notes along with photos.</span>
-                        </p>
+                    <div class="card">
+                        <div>
+                            <h3>
+                                <span class="ja-block">カレンダー 1</span>
+                                <span class="en-block">Calendar 1</span>
+                            </h3>
+                            <p>
+                                <span class="ja-block">日々の思い出や記録を写真やノートと一緒にシンプルかつスマートに残せるカレンダーアプリ。</span>
+                                <span class="en-block">A simple and smart calendar app to seamlessly capture daily memories and notes along with photos.</span>
+                            </p>
+                        </div>
+                        <a href="https://apps.apple.com/app/%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC-1/id6777579425" target="_blank" class="btn">
+                            <span class="ja-block">App Storeで見る</span>
+                            <span class="en-block">View on App Store</span>
+                        </a>
                     </div>
-                    <a href="https://apps.apple.com/app/%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC-1/id6777579425" target="_blank" class="btn">
-                        <span class="ja-block">App Storeで見る</span>
-                        <span class="en-block">View on App Store</span>
-                    </a>
+
                 </div>
+            </section>
+        </div>
 
-            </div>
-        </section>
-
-        <!-- YouTube動画セクション -->
-        <section>
-            <h2>
-                <span class="ja-block">🎥 YouTube 動画・エピソード</span>
-                <span class="en-block">🎥 YouTube Videos & Episodes</span>
-            </h2>
-            <div class="grid-container">
-                
-                <div class="card">
-                    <div>
-                        <h3>
-                            <span class="ja-block">おせち DIY</span>
-                            <span class="en-block">Osechi DIY</span>
-                        </h3>
-                        <p>
-                            <span class="ja-block">元和食職人の血が騒ぐ！？お家で作る本格おせちの製作ドキュメンタリーをお届けします。</span>
-                            <span class="en-block">A documentary-style look at crafting traditional Japanese Osechi New Year dishes at home, channeling the passion of a former Japanese chef.</span>
-                        </p>
+        <!-- 【タブ2】YouTube動画セクション -->
+        <div id="tab-youtube" class="tab-content">
+            <section>
+                <h2>
+                    <span class="ja-block">🎥 YouTube 動画・エピソード</span>
+                    <span class="en-block">🎥 YouTube Videos & Episodes</span>
+                </h2>
+                <div class="grid-container">
+                    
+                    <div class="card">
+                        <div>
+                            <h3>
+                                <span class="ja-block">おせち DIY</span>
+                                <span class="en-block">Osechi DIY</span>
+                            </h3>
+                            <p>
+                                <span class="ja-block">元和食職人の血が騒ぐ！？お家で作る本格おせちの製作ドキュメンタリーをお届けします。</span>
+                                <span class="en-block">A documentary-style look at crafting traditional Japanese Osechi New Year dishes at home, channeling the passion of a former Japanese chef.</span>
+                            </p>
+                        </div>
+                        <a href="https://youtu.be/7kE7UMYkNjk" target="_blank" class="btn btn-youtube">
+                            <span class="ja-block">YouTubeで視聴</span>
+                            <span class="en-block">Watch on YouTube</span>
+                        </a>
                     </div>
-                    <a href="https://youtu.be/7kE7UMYkNjk" target="_blank" class="btn btn-youtube">
-                        <span class="ja-block">YouTubeで視聴</span>
-                        <span class="en-block">Watch on YouTube</span>
-                    </a>
-                </div>
 
-                <div class="card">
-                    <div>
-                        <h3>
-                            <span class="ja-block">お正月（食卓）</span>
-                            <span class="en-block">New Year's Table</span>
-                        </h3>
-                        <p>
-                            <span class="ja-block">年の初めから、ちゃっかり美味しいものを並べてしまいました。食べる直前の最高の瞬間を切り取ったおうちの平和な正月風景。</span>
-                            <span class="en-block">A peaceful and cozy New Year scene capturing the table right before eating, filled with thoughtfully prepared seasonal dishes.</span>
-                        </p>
+                    <div class="card">
+                        <div>
+                            <h3>
+                                <span class="ja-block">お正月（食卓）</span>
+                                <span class="en-block">New Year's Table</span>
+                            </h3>
+                            <p>
+                                <span class="ja-block">年の初めから、ちゃっかり美味しいものを並べてしまいました。食べる直前の最高の瞬間を切り取ったおうちの平和な正月風景。</span>
+                                <span class="en-block">A peaceful and cozy New Year scene capturing the table right before eating, filled with thoughtfully prepared seasonal dishes.</span>
+                            </p>
+                        </div>
+                        <a href="https://youtu.be/Qi0vPzXQ6bA" target="_blank" class="btn btn-youtube">
+                            <span class="ja-block">YouTubeで視聴</span>
+                            <span class="en-block">Watch on YouTube</span>
+                        </a>
                     </div>
-                    <a href="https://youtu.be/Qi0vPzXQ6bA" target="_blank" class="btn btn-youtube">
-                        <span class="ja-block">YouTubeで視聴</span>
-                        <span class="en-block">Watch on YouTube</span>
-                    </a>
-                </div>
 
-                <div class="card">
-                    <div>
-                        <h3>
-                            <span class="ja-block">滋賀県近江八幡堀屋形船</span>
-                            <span class="en-block">Omihachiman Moat Boat Tour</span>
-                        </h3>
-                        <p>
-                            <span class="ja-block">豊臣秀次が開いた城下町の歴史を今に伝える八幡堀。水面すれすれの視点から移りゆく美しい町並みと舟旅の風情をお届けします。</span>
-                            <span class="en-block">A scenic boat tour along the historic Omihachiman moat, showcasing beautiful traditional townscapes from a water-level perspective.</span>
-                        </p>
+                    <div class="card">
+                        <div>
+                            <h3>
+                                <span class="ja-block">滋賀県近江八幡堀屋形船</span>
+                                <span class="en-block">Omihachiman Moat Boat Tour</span>
+                            </h3>
+                            <p>
+                                <span class="ja-block">豊臣秀次が開いた城下町の歴史を今に伝える八幡堀。水面すれすれの視点から移りゆく美しい町並みと舟旅の風情をお届けします。</span>
+                                <span class="en-block">A scenic boat tour along the historic Omihachiman moat, showcasing beautiful traditional townscapes from a water-level perspective.</span>
+                            </p>
+                        </div>
+                        <a href="https://youtu.be/HmQgTaBv2mM" target="_blank" class="btn btn-youtube">
+                            <span class="ja-block">YouTubeで視聴</span>
+                            <span class="en-block">Watch on YouTube</span>
+                        </a>
                     </div>
-                    <a href="https://youtu.be/HmQgTaBv2mM" target="_blank" class="btn btn-youtube">
-                        <span class="ja-block">YouTubeで視聴</span>
-                        <span class="en-block">Watch on YouTube</span>
-                    </a>
-                </div>
 
-                <div class="card">
-                    <div>
-                        <h3>
-                            <span class="ja-block">京都祇園 新山本店</span>
-                            <span class="en-block">Gion Shinyama, Kyoto</span>
-                        </h3>
-                        <p>
-                            <span class="ja-block">かつて界隈で愛された伝説の名店「新山」。当時を知る人ぞ知る記憶や、華やかな祇園の雰囲気をたどる記録映像。</span>
-                            <span class="en-block">A historical record capturing the memories and atmospheric charm of "Shinyama," a legendary restaurant once loved in the Gion district.</span>
-                        </p>
+                    <div class="card">
+                        <div>
+                            <h3>
+                                <span class="ja-block">京都祇園 新山本店</span>
+                                <span class="en-block">Gion Shinyama, Kyoto</span>
+                            </h3>
+                            <p>
+                                <span class="ja-block">かつて界隈で愛された伝説の名店「新山」。当時を知る人ぞ知る記憶や、華やかな祇園の雰囲気をたどる記録映像。</span>
+                                <span class="en-block">A historical record capturing the memories and atmospheric charm of "Shinyama," a legendary restaurant once loved in the Gion district.</span>
+                            </p>
+                        </div>
+                        <a href="https://youtu.be/2uQG5O5r69A" target="_blank" class="btn btn-youtube">
+                            <span class="ja-block">YouTubeで視聴</span>
+                            <span class="en-block">Watch on YouTube</span>
+                        </a>
                     </div>
-                    <a href="https://youtu.be/2uQG5O5r69A" target="_blank" class="btn btn-youtube">
-                        <span class="ja-block">YouTubeで視聴</span>
-                        <span class="en-block">Watch on YouTube</span>
-                    </a>
+
                 </div>
+            </section>
+        </div>
 
-            </div>
-        </section>
-
-        <!-- おすすめチャンネル（他の方のページ）セクションを追加 -->
-        <section>
-            <h2>
-                <span class="ja-block">📺 おすすめYouTubeチャンネル</span>
-                <span class="en-block">📺 Recommended YouTube Channels</span>
-            </h2>
-            <div class="grid-container">
-                
-                <div class="card">
-                    <div>
-                        <h3>
-                            <span class="ja-block">おすすめチャンネル 1</span>
-                            <span class="en-block">Recommended Channel 1</span>
-                        </h3>
-                        <p>
-                            <span class="ja-block">注目のおすすめYouTubeチャンネルです。ぜひご覧ください。</span>
-                            <span class="en-block">Check out this interesting YouTube channel.</span>
-                        </p>
+        <!-- 【タブ3】おすすめチャンネルセクション -->
+        <div id="tab-recommended" class="tab-content">
+            <section>
+                <h2>
+                    <span class="ja-block">📺 おすすめYouTubeチャンネル</span>
+                    <span class="en-block">📺 Recommended YouTube Channels</span>
+                </h2>
+                <div class="grid-container">
+                    
+                    <div class="card">
+                        <div>
+                            <h3>
+                                <span class="ja-block">おすすめチャンネル 1</span>
+                                <span class="en-block">Recommended Channel 1</span>
+                            </h3>
+                            <p>
+                                <span class="ja-block">注目のおすすめYouTubeチャンネルです。ぜひご覧ください。</span>
+                                <span class="en-block">Check out this interesting YouTube channel.</span>
+                            </p>
+                        </div>
+                        <a href="https://www.youtube.com/@fromjapan4789" target="_blank" class="btn btn-youtube">
+                            <span class="ja-block">チャンネルを見る</span>
+                            <span class="en-block">View Channel</span>
+                        </a>
                     </div>
-                    <a href="https://www.youtube.com/@fromjapan4789" target="_blank" class="btn btn-youtube">
-                        <span class="ja-block">チャンネルを見る</span>
-                        <span class="en-block">View Channel</span>
-                    </a>
-                </div>
 
-                <div class="card">
-                    <div>
-                        <h3>
-                            <span class="ja-block">おすすめチャンネル 2</span>
-                            <span class="en-block">Recommended Channel 2</span>
-                        </h3>
-                        <p>
-                            <span class="ja-block">注目のおすすめYouTubeチャンネルです。ぜひご覧ください。</span>
-                            <span class="en-block">Check out this interesting YouTube channel.</span>
-                        </p>
+                    <div class="card">
+                        <div>
+                            <h3>
+                                <span class="ja-block">おすすめチャンネル 2</span>
+                                <span class="en-block">Recommended Channel 2</span>
+                            </h3>
+                            <p>
+                                <span class="ja-block">注目のおすすめYouTubeチャンネルです。ぜひご覧ください。</span>
+                                <span class="en-block">Check out this interesting YouTube channel.</span>
+                            </p>
+                        </div>
+                        <a href="https://www.youtube.com/@sui%E6%B0%B4" target="_blank" class="btn btn-youtube">
+                            <span class="ja-block">チャンネルを見る</span>
+                            <span class="en-block">View Channel</span>
+                        </a>
                     </div>
-                    <a href="https://www.youtube.com/@sui%E6%B0%B4" target="_blank" class="btn btn-youtube">
-                        <span class="ja-block">チャンネルを見る</span>
-                        <span class="en-block">View Channel</span>
-                    </a>
-                </div>
 
-            </div>
-        </section>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2026 App & YouTube Portfolio All Rights Reserved.</p>
     </footer>
 
-    <!-- 言語切り替え用のJavaScript -->
+    <!-- タブ切り替えおよび言語切り替え用のJavaScript -->
     <script>
         let currentLang = 'ja'; // 初期値は日本語
 
+        // タブを切り替える関数
+        function switchTab(tabId, clickedBtn) {
+            // すべてのタブコンテンツを非表示にする
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active-content'));
+
+            // すべてのタブボタンのアクティブ状態を解除する
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // 選択されたタブコンテンツを表示する
+            document.getElementById(tabId).classList.add('active-content');
+
+            // クリックされたタブボタンにアクティブ状態を付与する
+            clickedBtn.classList.add('active');
+        }
+
+        // 言語を切り替える関数
         function toggleLanguage() {
             const jaBlocks = document.querySelectorAll('.ja-block');
             const enBlocks = document.querySelectorAll('.en-block');
