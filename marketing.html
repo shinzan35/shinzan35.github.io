@@ -64,6 +64,7 @@
             background: rgba(0, 0, 0, 0.15);
             padding: 0 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
+            flex-wrap: wrap;
         }
 
         /* エクセル風タブボタン */
@@ -71,8 +72,8 @@
             background-color: #d1d8e0;
             color: #4b6584;
             border: none;
-            padding: 0.6rem 1.5rem;
-            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
             font-weight: bold;
             cursor: pointer;
             border-top-left-radius: 6px;
@@ -220,30 +221,34 @@
             <span class="en-block">A collection of iOS applications and YouTube videos documenting cities and history.</span>
         </p>
 
-        <!-- エクセル風タブバー -->
+        <!-- 4つのエクセル風タブバー -->
         <div class="tab-container">
             <button class="tab-btn active" onclick="switchTab('tab-apps', this)">
-                <span class="ja-block">📱 アプリ</span>
-                <span class="en-block">📱 Apps</span>
+                <span class="ja-block">📱 パパアプリ</span>
+                <span class="en-block">📱 Dad's Apps</span>
             </button>
             <button class="tab-btn" onclick="switchTab('tab-youtube', this)">
-                <span class="ja-block">🎥 マイYouTube</span>
-                <span class="en-block">🎥 My YouTube</span>
+                <span class="ja-block">🎥 パパYouTube</span>
+                <span class="en-block">🎥 Dad's YouTube</span>
             </button>
-            <button class="tab-btn" onclick="switchTab('tab-recommended', this)">
-                <span class="ja-block">📺 おすすめチャンネル</span>
-                <span class="en-block">📺 Recommended</span>
+            <button class="tab-btn" onclick="switchTab('tab-mama', this)">
+                <span class="ja-block">🎥 ママYouTube</span>
+                <span class="en-block">🎥 Mom's YouTube</span>
+            </button>
+            <button class="tab-btn" onclick="switchTab('tab-kyoto', this)">
+                <span class="ja-block">🌸 Kyoto Local</span>
+                <span class="en-block">🌸 Kyoto Local</span>
             </button>
         </div>
     </header>
 
     <main>
-        <!-- 【タブ1】アプリ紹介セクション -->
+        <!-- 【タブ1】パパアプリ -->
         <div id="tab-apps" class="tab-content active-content">
             <section>
                 <h2>
-                    <span class="ja-block">📱 アプリケーション一覧(現在アイホンのみ対応です)</span>
-                    <span class="en-block">📱 iOS Applications (Currently for iPhone only)</span>
+                    <span class="ja-block">📱 パパのアプリケーション一覧(現在アイホンのみ対応です)</span>
+                    <span class="en-block">📱 Dad's iOS Applications (Currently for iPhone only)</span>
                 </h2>
                 <div class="grid-container">
                     
@@ -313,12 +318,12 @@
             </section>
         </div>
 
-        <!-- 【タブ2】YouTube動画セクション -->
+        <!-- 【タブ2】パパYouTube -->
         <div id="tab-youtube" class="tab-content">
             <section>
                 <h2>
-                    <span class="ja-block">🎥 YouTube 動画・エピソード</span>
-                    <span class="en-block">🎥 YouTube Videos & Episodes</span>
+                    <span class="ja-block">🎥 パパのYouTube 動画・エピソード</span>
+                    <span class="en-block">🎥 Dad's YouTube Videos & Episodes</span>
                 </h2>
                 <div class="grid-container">
                     
@@ -394,44 +399,57 @@
             </section>
         </div>
 
-        <!-- 【タブ3】おすすめチャンネルセクション -->
-        <div id="tab-recommended" class="tab-content">
+        <!-- 【タブ3】ママYouTube（@sui水） -->
+        <div id="tab-mama" class="tab-content">
             <section>
                 <h2>
-                    <span class="ja-block">📺 おすすめYouTubeチャンネル</span>
-                    <span class="en-block">📺 Recommended YouTube Channels</span>
+                    <span class="ja-block">🎥 ママのYouTubeチャンネル</span>
+                    <span class="en-block">🎥 Mom's YouTube Channel</span>
                 </h2>
                 <div class="grid-container">
                     
                     <div class="card">
                         <div>
                             <h3>
-                                <span class="ja-block">おすすめチャンネル 1</span>
-                                <span class="en-block">Recommended Channel 1</span>
+                                <span class="ja-block">ママのチャンネル</span>
+                                <span class="en-block">Mom's Channel</span>
                             </h3>
                             <p>
-                                <span class="ja-block">注目のおすすめYouTubeチャンネルです。ぜひご覧ください。</span>
-                                <span class="en-block">Check out this interesting YouTube channel.</span>
+                                <span class="ja-block">ママの素敵なYouTubeチャンネルです。ぜひチェックしてみてください。</span>
+                                <span class="en-block">Check out Mom's wonderful YouTube channel.</span>
                             </p>
                         </div>
-                        <a href="https://www.youtube.com/@fromjapan4789" target="_blank" class="btn btn-youtube">
+                        <a href="https://www.youtube.com/@sui%E6%B0%B4" target="_blank" class="btn btn-youtube">
                             <span class="ja-block">チャンネルを見る</span>
                             <span class="en-block">View Channel</span>
                         </a>
                     </div>
 
+                </div>
+            </section>
+        </div>
+
+        <!-- 【タブ4】Kyoto Local（@fromjapan4789） -->
+        <div id="tab-kyoto" class="tab-content">
+            <section>
+                <h2>
+                    <span class="ja-block">🌸 Kyoto Local チャンネル</span>
+                    <span class="en-block">🌸 Kyoto Local Channels</span>
+                </h2>
+                <div class="grid-container">
+                    
                     <div class="card">
                         <div>
                             <h3>
-                                <span class="ja-block">おすすめチャンネル 2</span>
-                                <span class="en-block">Recommended Channel 2</span>
+                                <span class="ja-block">Kyoto Local チャンネル</span>
+                                <span class="en-block">Kyoto Local Channel</span>
                             </h3>
                             <p>
-                                <span class="ja-block">注目のおすすめYouTubeチャンネルです。ぜひご覧ください。</span>
-                                <span class="en-block">Check out this interesting YouTube channel.</span>
+                                <span class="ja-block">京都の魅力や地域情報を発信するおすすめのYouTubeチャンネルです。</span>
+                                <span class="en-block">Recommended YouTube channel sharing the charm and local info of Kyoto.</span>
                             </p>
                         </div>
-                        <a href="https://www.youtube.com/@sui%E6%B0%B4" target="_blank" class="btn btn-youtube">
+                        <a href="https://www.youtube.com/@fromjapan4789" target="_blank" class="btn btn-youtube">
                             <span class="ja-block">チャンネルを見る</span>
                             <span class="en-block">View Channel</span>
                         </a>
