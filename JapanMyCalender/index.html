@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Travel &amp; Leisure Guide | 日本レジャー・観光ガイド</title>
+    <meta name="description" content="A travel guide to Japan for inbound visitors: sightseeing, shopping malls, shopping streets, sports stadiums, hands-on experiences, local gourmet food and green tourism across all 9 regions.">
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef7ff',
+                            100: '#d9ecff',
+                            400: '#4d9fff',
+                            500: '#1f7ff0',
+                            600: '#0d63d6',
+                            700: '#0b4ea9',
+                            900: '#082f63'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '"Noto Sans JP"', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { height: 6px; }
+        .hide-scrollbar::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 999px; }
+        .hide-scrollbar::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 999px; }
+        .hide-scrollbar::-webkit-scrollbar-thumb:hover { background: #64748b; }
+        .card-enter { animation: cardIn .28s ease-out both; }
+        @keyframes cardIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+        [hidden] { display: none !important; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-full flex flex-col">
+
+    <!-- ===== Header ===== -->
+    <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur text-white shadow-lg shadow-slate-900/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="h-16 sm:h-20 flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-brand-600 flex items-center justify-center text-xl shadow-inner shrink-0">🇯🇵</div>
+                    <div class="min-w-0">
+                        <h1 data-i18n="appTitle" class="font-bold tracking-tight text-base sm:text-xl leading-tight truncate">Japan Travel &amp; Leisure Guide</h1>
+                        <p data-i18n="appSubtitle" class="text-[11px] sm:text-xs text-slate-300 leading-tight truncate">9 regions × 7 genres of unforgettable experiences</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    <div class="flex items-center bg-slate-800 rounded-full p-1 text-[11px] sm:text-xs font-semibold" role="group" aria-label="Language">
+                        <button type="button" data-lang="en" class="lang-btn px-2.5 sm:px-3 py-1.5 rounded-full transition">EN</button>
+                        <button type="button" data-lang="ja" class="lang-btn px-2.5 sm:px-3 py-1.5 rounded-full transition">日本語</button>
+                        <button type="button" data-lang="both" class="lang-btn px-2.5 sm:px-3 py-1.5 rounded-full transition">EN+JP</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pb-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-[11px] sm:text-xs text-slate-300">
+                <span><strong id="statSpots" class="text-white">0</strong> <span data-i18n="statSpots">spots</span></span>
+                <span><strong id="statRegions" class="text-white">0</strong> <span data-i18n="statRegions">regions</span></span>
+                <span><strong id="statCategories" class="text-white">0</strong> <span data-i18n="statCategories">genres</span></span>
+                <span class="text-amber-300" data-i18n="templeNote">Temples &amp; shrines are excluded from this guide.</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Data load warning ===== -->
+    <div id="dataWarning" hidden class="bg-amber-100 border-b border-amber-300 text-amber-900 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            ⚠️ <span data-i18n="dataWarning">Could not load the spot data. Please keep data.html in the same folder as index.html.</span>
+        </div>
+    </div>
+
+    <main class="flex-1 w-full">
+        <!-- ===== Region navigation ===== -->
+        <section class="bg-white border-b border-slate-200 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 data-i18n="regionLabel" class="text-xs font-bold uppercase tracking-widest text-slate-500">Region</h2>
+                    <span id="regionHint" class="text-[11px] text-slate-400"></span>
+                </div>
+                <div id="regionTabs" class="hide-scrollbar flex gap-2 overflow-x-auto pb-1"></div>
+            </div>
+        </section>
+
+        <!-- ===== Filters ===== -->
+        <section class="bg-slate-50 border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-3">
+                <div class="flex items-center justify-between gap-3">
+                    <h2 data-i18n="genreLabel" class="text-xs font-bold uppercase tracking-widest text-slate-500">Genre</h2>
+                    <button id="resetBtn" type="button" class="text-xs font-semibold text-brand-600 hover:text-brand-700 hover:underline" data-i18n="reset">Reset all filters</button>
+                </div>
+                <div id="categoryChips" class="flex flex-wrap gap-2"></div>
+                <div id="subGenreBlock" hidden>
+                    <p data-i18n="subGenreLabel" class="mb-2 text-xs font-bold uppercase tracking-widest text-slate-500">Style</p>
+                    <div id="subGenreChips" class="flex flex-wrap gap-2"></div>
+                </div>
+                <div class="pt-1">
+                    <p data-i18n="prefectureLabel" class="mb-2 text-xs font-bold uppercase tracking-widest text-slate-500">Prefecture</p>
+                    <div id="prefectureTabs" class="hide-scrollbar flex gap-2 overflow-x-auto pb-1"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-3 pt-1">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 pointer-events-none">🔍</span>
+                        <input id="searchInput" type="search" autocomplete="off"
+                               class="w-full rounded-xl border border-slate-300 bg-white pl-10 pr-3 py-2.5 text-sm shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none"
+                               placeholder="Search spots, cities, food…" data-i18n-placeholder="searchPlaceholder">
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <label for="sortSelect" class="text-xs font-semibold text-slate-500 whitespace-nowrap" data-i18n="sortLabel">Sort</label>
+                        <select id="sortSelect" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none">
+                            <option value="default" data-i18n="sortDefault">Region order</option>
+                            <option value="name" data-i18n="sortName">Name (A–Z)</option>
+                            <option value="category" data-i18n="sortCategory">Genre order</option>
+                        </select>
+                    </div>
+                </div>
+                <p id="activeFilterSummary" class="text-xs text-slate-500"></p>
+            </div>
+        </section>
+
+        <!-- ===== Results ===== -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
+            <div class="flex items-end justify-between mb-4 gap-4">
+                <div>
+                    <h2 id="resultsTitle" class="text-lg sm:text-2xl font-bold text-slate-900">All spots</h2>
+                    <p id="resultsMeta" class="text-xs sm:text-sm text-slate-500 mt-0.5"></p>
+                </div>
+            </div>
+            <div id="spotGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+            <div id="loadMoreWrap" class="mt-7 text-center" hidden>
+                <button id="loadMoreBtn" type="button" class="inline-flex items-center gap-2 rounded-xl border border-brand-200 bg-white px-6 py-3 text-sm font-bold text-brand-700 shadow-sm hover:bg-brand-50 transition">
+                    <span data-i18n="showMore">Show more spots</span>
+                    <span id="loadMoreCount" class="text-xs font-semibold text-slate-400"></span>
+                </button>
+            </div>
+            <div id="emptyState" hidden class="text-center py-16 bg-white rounded-2xl border border-dashed border-slate-300">
+                <div class="text-4xl mb-3">🧭</div>
+                <p class="font-semibold text-slate-700" data-i18n="noResults">No spots matched your filters.</p>
+                <p class="text-sm text-slate-500 mt-1" data-i18n="noResultsHint">Try another region, genre or keyword.</p>
+                <button id="emptyResetBtn" type="button" class="mt-4 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 transition">
+                    <span data-i18n="reset">Reset all filters</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-300 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-2">
+            <p data-i18n="footerNote">Information and links are provided for reference. Opening hours, prices and availability may change — please check each official website before your visit.</p>
+            <p class="text-slate-500">© <span id="year"></span> Japan Travel &amp; Leisure Guide ／ index.html + data.html</p>
+        </div>
+    </footer>
+
+    <button id="toTop" type="button" hidden aria-label="Back to top" class="fixed bottom-5 right-5 z-40 w-11 h-11 rounded-full bg-brand-600 text-white shadow-lg hover:bg-brand-700 transition">↑</button>
+
+    <!-- ===== Spot data (loaded from data.html) ===== -->
+    <script src="data.html"></script>
+    <script>
+    (function () {
+        'use strict';
+
+        /* ================= i18n ================= */
+        const I18N = {
+            en: {
+                appTitle: 'Japan Travel & Leisure Guide',
+                appSubtitle: '9 regions · 47 prefectures · 7 genres (16 food styles)',
+                statSpots: 'spots', statRegions: 'regions', statCategories: 'genres',
+                templeNote: 'Temples & shrines are excluded from this guide.',
+                dataWarning: 'Could not load the spot data. Please keep data.html in the same folder as index.html. If this message stays, start a local web server in this folder (python3 -m http.server) and open index.html from there.',
+                regionLabel: 'Region', genreLabel: 'Genre', reset: 'Reset all filters',
+                prefectureLabel: 'Prefecture', subGenreLabel: 'Food style / Shop type',
+                allPrefectures: 'All prefectures', allSubGenres: 'All styles',
+                showMore: 'Show more spots', remaining: 'remaining',
+                searchPlaceholder: 'Search spots, cities, food…',
+                sortLabel: 'Sort', sortDefault: 'Region order', sortName: 'Name (A–Z)', sortCategory: 'Genre order',
+                allRegions: 'All Japan', allGenres: 'All genres',
+                officialSite: 'Official site', googleMaps: 'Google Maps', referenceSite: 'Reference',
+                noResults: 'No spots matched your filters.',
+                noResultsHint: 'Try another region, genre or keyword.',
+                resultsTitle: 'Spots', showing: 'Showing', of: 'of', unit: 'spots',
+                footerNote: 'Information and links are provided for reference. Opening hours, prices and availability may change — please check each official website before your visit.'
+            },
+            ja: {
+                appTitle: '日本レジャー・観光ガイド',
+                appSubtitle: '9地域・47都道府県 × 7ジャンル（料理16分類）',
+                statSpots: 'スポット', statRegions: '地域', statCategories: 'ジャンル',
+                templeNote: '社寺（神社・仏閣）は本ガイドの対象外です。',
+                dataWarning: 'スポットデータを読み込めませんでした。data.html を index.html と同じフォルダに置いてください。表示が直らない場合は、このフォルダで簡易サーバー（python3 -m http.server）を起動し、index.html を開いてください。',
+                regionLabel: '地域', genreLabel: 'ジャンル', reset: '条件をすべてリセット',
+                prefectureLabel: '都道府県', subGenreLabel: '料理ジャンル／店舗タイプ',
+                allPrefectures: '全都道府県', allSubGenres: 'すべて',
+                showMore: 'もっと見る', remaining: '残り',
+                searchPlaceholder: 'スポット名・地名・グルメで検索…',
+                sortLabel: '並び順', sortDefault: '地域順', sortName: '名前順', sortCategory: 'ジャンル順',
+                allRegions: '全国', allGenres: 'すべてのジャンル',
+                officialSite: '公式サイト', googleMaps: 'Googleマップ', referenceSite: '参考サイト',
+                noResults: '条件に一致するスポットがありません。',
+                noResultsHint: '地域・ジャンル・キーワードを変えてお試しください。',
+                resultsTitle: 'スポット一覧', showing: '表示中', of: '/', unit: '件',
+                footerNote: '掲載情報・リンクは参考情報です。営業時間や料金は変更される場合がありますので、お出かけ前に各公式サイトをご確認ください。'
+            }
+        };
+
+        /* Data is provided by data.html (see the bootstrap code at the bottom). */
+        let REGIONS = [];
+        let CATEGORIES = [];
+        let SPOTS = [];
+
+        const state = {
+            region: 'all', prefecture: 'all', category: 'all', subGenre: 'all',
+            query: '', sort: 'default', lang: 'en', visible: 48
+        };
+
+        const PAGE_SIZE = 48;
+
+        let PREFECTURES = Array.isArray(window.LEISURE_PREFECTURES) ? window.LEISURE_PREFECTURES : [];
+        let SUBGENRES = (window.LEISURE_SUBGENRES && typeof window.LEISURE_SUBGENRES === 'object') ? window.LEISURE_SUBGENRES : {};
+
+        let regionById = {}, categoryById = {}, prefectureById = {}, subGenreById = {};
+
+        function subGenresOf(categoryId) {
+            return SUBGENRES[categoryId] || [];
+        }
+
+        function subGenreOf(categoryId, subGenreId) {
+            return subGenreById[categoryId + ':' + subGenreId];
+        }
+
+        function setData(payload) {
+            REGIONS = Array.isArray(payload.regions) ? payload.regions : [];
+            CATEGORIES = Array.isArray(payload.categories) ? payload.categories : [];
+            SPOTS = Array.isArray(payload.spots) ? payload.spots : [];
+            if (Array.isArray(payload.prefectures) && payload.prefectures.length) { PREFECTURES = payload.prefectures; }
+            if (payload.subGenres && typeof payload.subGenres === 'object') { SUBGENRES = payload.subGenres; }
+
+            regionById = {}; categoryById = {};
+            prefectureById = {}; subGenreById = {};
+            REGIONS.forEach(function (r, i) { r._i = i; regionById[r.id] = r; });
+            CATEGORIES.forEach(function (c, i) { c._i = i; categoryById[c.id] = c; });
+            PREFECTURES.forEach(function (p, i) { p._i = i; prefectureById[p.id] = p; });
+            Object.keys(SUBGENRES).forEach(function (key) {
+                SUBGENRES[key].forEach(function (g, i) { g._i = i; subGenreById[key + ':' + g.id] = g; });
+            });
+
+            state.prefecture = 'all';
+            state.subGenre = 'all';
+            state.visible = PAGE_SIZE;
+
+            /* Pre-compute a lowercase haystack for keyword search. */
+            SPOTS.forEach(function (spot) {
+                const region = regionById[spot.region];
+                const category = categoryById[spot.category];
+                const pref = prefectureById[spot.prefecture];
+                const sub = subGenreOf(spot.category, spot.subGenre);
+                spot._haystack = [
+                    spot.nameEn, spot.nameJp, spot.descriptionEn, spot.descriptionJp,
+                    spot.mapQuery, spot.city,
+                    region ? region.nameEn + ' ' + region.nameJp : '',
+                    category ? category.nameEn + ' ' + category.nameJp : '',
+                    pref ? pref.nameEn + ' ' + pref.nameJp : '',
+                    sub ? sub.nameEn + ' ' + sub.nameJp : ''
+                ].join(' ').toLowerCase();
+            });
+        }
+
+        const $ = function (sel) { return document.querySelector(sel); };
+        const t = function (key) { return (I18N[state.lang] || I18N.en)[key] || I18N.en[key] || key; };
+
+        /* ================= helpers ================= */
+        function esc(value) {
+            return String(value == null ? '' : value)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+        function mapsUrl(spot) {
+            const q = spot.mapQuery || spot.nameJp || spot.nameEn || '';
+            return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+        }
+
+        function matchesQuery(spot) {
+            return !state.query || spot._haystack.indexOf(state.query) !== -1;
+        }
+
+        function matches(spot, opts) {
+            const skip = opts || {};
+            if (!matchesQuery(spot)) { return false; }
+            if (!skip.region && state.region !== 'all' && spot.region !== state.region) { return false; }
+            if (!skip.prefecture && state.prefecture !== 'all' && spot.prefecture !== state.prefecture) { return false; }
+            if (!skip.category && state.category !== 'all' && spot.category !== state.category) { return false; }
+            if (!skip.subGenre && state.subGenre !== 'all' && spot.subGenre !== state.subGenre) { return false; }
+            return true;
+        }
+
+        function countWhere(opts) {
+            return SPOTS.filter(function (spot) { return matches(spot, opts); }).length;
+        }
+
+        function sortSpots(list) {
+            const arr = list.slice();
+            if (state.sort === 'name') {
+                return arr.sort(function (a, b) {
+                    const an = state.lang === 'ja' ? a.nameJp : a.nameEn;
+                    const bn = state.lang === 'ja' ? b.nameJp : b.nameEn;
+                    return String(an).localeCompare(String(bn), 'ja');
+                });
+            }
+            if (state.sort === 'category') {
+                return arr.sort(function (a, b) {
+                    const ac = categoryById[a.category] ? categoryById[a.category]._i : 99;
+                    const bc = categoryById[b.category] ? categoryById[b.category]._i : 99;
+                    if (ac !== bc) { return ac - bc; }
+                    return (regionById[a.region] ? regionById[a.region]._i : 99) - (regionById[b.region] ? regionById[b.region]._i : 99);
+                });
+            }
+            return arr.sort(function (a, b) {
+                const ar = regionById[a.region] ? regionById[a.region]._i : 99;
+                const br = regionById[b.region] ? regionById[b.region]._i : 99;
+                if (ar !== br) { return ar - br; }
+                return (categoryById[a.category] ? categoryById[a.category]._i : 99) - (categoryById[b.category] ? categoryById[b.category]._i : 99);
+            });
+        }
+
+        function regionName(id) {
+            const r = regionById[id];
+            if (!r) { return id; }
+            return state.lang === 'ja' ? r.nameJp : (state.lang === 'both' ? r.nameEn + ' / ' + r.nameJp : r.nameEn);
+        }
+
+        function categoryName(id) {
+            const c = categoryById[id];
+            if (!c) { return id; }
+            return state.lang === 'ja' ? c.nameJp : (state.lang === 'both' ? c.nameEn + ' / ' + c.nameJp : c.nameEn);
+        }
+
+        function prefName(id) {
+            const p = prefectureById[id];
+            if (!p) { return id; }
+            return state.lang === 'ja' ? p.nameJp : (state.lang === 'both' ? p.nameEn + ' / ' + p.nameJp : p.nameEn);
+        }
+
+        function subGenreName(categoryId, subGenreId) {
+            const g = subGenreOf(categoryId, subGenreId);
+            if (!g) { return ''; }
+            return state.lang === 'ja' ? g.nameJp : (state.lang === 'both' ? g.nameEn + ' / ' + g.nameJp : g.nameEn);
+        }
+
+        /* ================= rendering ================= */
+        function countForRegion(regionId) {
+            return SPOTS.filter(function (spot) {
+                if (!matchesQuery(spot)) { return false; }
+                if (state.category !== 'all' && spot.category !== state.category) { return false; }
+                if (state.subGenre !== 'all' && spot.subGenre !== state.subGenre) { return false; }
+                if (state.prefecture !== 'all' && spot.prefecture !== state.prefecture) { return false; }
+                return regionId === 'all' ? true : spot.region === regionId;
+            }).length;
+        }
+
+        function countForCategory(categoryId) {
+            return SPOTS.filter(function (spot) {
+                if (!matchesQuery(spot)) { return false; }
+                if (state.region !== 'all' && spot.region !== state.region) { return false; }
+                if (state.prefecture !== 'all' && spot.prefecture !== state.prefecture) { return false; }
+                return categoryId === 'all' ? true : spot.category === categoryId;
+            }).length;
+        }
+
+        function countForPrefecture(prefectureId) {
+            return SPOTS.filter(function (spot) {
+                if (!matchesQuery(spot)) { return false; }
+                if (state.region !== 'all' && spot.region !== state.region) { return false; }
+                if (state.category !== 'all' && spot.category !== state.category) { return false; }
+                if (state.subGenre !== 'all' && spot.subGenre !== state.subGenre) { return false; }
+                return prefectureId === 'all' ? true : spot.prefecture === prefectureId;
+            }).length;
+        }
+
+        function countForSubGenre(subGenreId) {
+            return SPOTS.filter(function (spot) {
+                if (!matchesQuery(spot)) { return false; }
+                if (state.region !== 'all' && spot.region !== state.region) { return false; }
+                if (state.prefecture !== 'all' && spot.prefecture !== state.prefecture) { return false; }
+                if (state.category !== 'all' && spot.category !== state.category) { return false; }
+                return subGenreId === 'all' ? true : spot.subGenre === subGenreId;
+            }).length;
+        }
+
+        function chipClass(active, count) {
+            const base = 'shrink-0 inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-brand-200';
+            if (active) { return base + ' bg-brand-600 border-brand-600 text-white shadow-md shadow-brand-600/20'; }
+            if (!count) { return base + ' bg-white border-slate-200 text-slate-300 cursor-not-allowed'; }
+            return base + ' bg-white border-slate-200 text-slate-600 hover:border-brand-300 hover:text-brand-700 hover:bg-brand-50';
+        }
+
+        function countBadge(active, count) {
+            const cls = active ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500';
+            return '<span class="text-[11px] font-bold px-1.5 py-0.5 rounded-full ' + cls + '">' + count + '</span>';
+        }
+
+        function renderRegionTabs() {
+            const wrap = $('#regionTabs');
+            const tabs = [{ id: 'all', emoji: '🇯🇵', label: t('allRegions') }].concat(REGIONS.map(function (r) {
+                const label = state.lang === 'ja' ? r.nameJp : (state.lang === 'both' ? r.nameEn + ' / ' + r.nameJp : r.nameEn);
+                return { id: r.id, emoji: r.emoji, label: label };
+            }));
+            wrap.innerHTML = tabs.map(function (tab) {
+                const active = state.region === tab.id;
+                const count = countForRegion(tab.id);
+                return '<button type="button" data-region="' + tab.id + '" aria-pressed="' + active + '" class="' + chipClass(active, count) + '">' +
+                    '<span>' + tab.emoji + '</span><span>' + esc(tab.label) + '</span>' + countBadge(active, count) + '</button>';
+            }).join('');
+        }
+
+        function renderCategoryChips() {
+            const wrap = $('#categoryChips');
+            const chips = [{ id: 'all', emoji: '✨', label: t('allGenres') }].concat(CATEGORIES.map(function (c) {
+                const label = state.lang === 'ja' ? c.nameJp : (state.lang === 'both' ? c.nameEn + ' / ' + c.nameJp : c.nameEn);
+                return { id: c.id, emoji: c.emoji, label: label };
+            }));
+            wrap.innerHTML = chips.map(function (chip) {
+                const active = state.category === chip.id;
+                const count = countForCategory(chip.id);
+                return '<button type="button" data-category="' + chip.id + '" aria-pressed="' + active + '" class="' + chipClass(active, count) + '">' +
+                    '<span>' + chip.emoji + '</span><span>' + esc(chip.label) + '</span>' + countBadge(active, count) + '</button>';
+            }).join('');
+        }
+
+        function renderPrefectureTabs() {
+            const wrap = $('#prefectureTabs');
+            const list = PREFECTURES.filter(function (p) {
+                return state.region === 'all' || p.region === state.region;
+            });
+            const chips = [{ id: 'all', emoji: '📍', label: t('allPrefectures') }].concat(list.map(function (p) {
+                const label = state.lang === 'ja' ? p.nameJp : (state.lang === 'both' ? p.nameEn + ' / ' + p.nameJp : p.nameEn);
+                return { id: p.id, emoji: '', label: label };
+            }));
+            wrap.innerHTML = chips.map(function (chip) {
+                const active = state.prefecture === chip.id;
+                const count = countForPrefecture(chip.id);
+                return '<button type="button" data-prefecture="' + chip.id + '" aria-pressed="' + active + '" class="' + chipClass(active, count) + '">' +
+                    (chip.emoji ? '<span>' + chip.emoji + '</span>' : '📍') +
+                    '<span>' + esc(chip.label) + '</span>' + countBadge(active, count) + '</button>';
+            }).join('');
+        }
+
+        function renderSubGenreChips() {
+            const block = $('#subGenreBlock');
+            const genres = subGenresOf(state.category);
+            if (!genres.length) {
+                block.hidden = true;
+                $('#subGenreChips').innerHTML = '';
+                return;
+            }
+            block.hidden = false;
+            const chips = [{ id: 'all', emoji: '✨', label: t('allSubGenres') }].concat(genres.map(function (g) {
+                const label = state.lang === 'ja' ? g.nameJp : (state.lang === 'both' ? g.nameEn + ' / ' + g.nameJp : g.nameEn);
+                return { id: g.id, emoji: g.emoji, label: label };
+            }));
+            $('#subGenreChips').innerHTML = chips.map(function (chip) {
+                const active = state.subGenre === chip.id;
+                const count = countForSubGenre(chip.id);
+                return '<button type="button" data-subgenre="' + chip.id + '" aria-pressed="' + active + '" class="' + chipClass(active, count) + '">' +
+                    '<span>' + chip.emoji + '</span><span>' + esc(chip.label) + '</span>' + countBadge(active, count) + '</button>';
+            }).join('');
+        }
+
+        function spotCard(spot, index) {
+            const region = regionById[spot.region] || { emoji: '', nameEn: spot.region, nameJp: spot.region };
+            const category = categoryById[spot.category] || { emoji: '', nameEn: spot.category, nameJp: spot.category };
+            const regionLabel = state.lang === 'ja' ? region.nameJp : region.nameEn;
+            const categoryLabel = state.lang === 'ja' ? category.nameJp : category.nameEn;
+            const pref = prefectureById[spot.prefecture];
+            const prefLabel = pref ? (state.lang === 'ja' ? pref.nameJp : pref.nameEn) : '';
+            const sub = subGenreOf(spot.category, spot.subGenre);
+            const subLabel = sub ? (state.lang === 'ja' ? sub.nameJp : sub.nameEn) : '';
+            const isReference = spot.linkType === 'reference';
+
+            let title = esc(spot.nameEn);
+            let subTitle = '';
+            let desc = esc(spot.descriptionEn);
+            let subDesc = '';
+            if (state.lang === 'ja') {
+                title = esc(spot.nameJp);
+                desc = esc(spot.descriptionJp);
+            } else if (state.lang === 'both') {
+                subTitle = esc(spot.nameJp);
+                subDesc = esc(spot.descriptionJp);
+            }
+
+            return '<article class="card-enter bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition flex flex-col overflow-hidden" ' +
+                'style="animation-delay:' + Math.min(index * 18, 320) + 'ms">' +
+                '<div class="h-1.5 w-full bg-gradient-to-r from-brand-500 to-brand-700"></div>' +
+                '<div class="p-5 flex flex-col gap-3 flex-1">' +
+                '<div class="flex flex-wrap items-center gap-2 text-[11px] font-semibold">' +
+                '<span class="inline-flex items-center gap-1 rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-brand-700">' + region.emoji + ' ' + esc(regionLabel) + '</span>' +
+                '<span class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-100 px-2.5 py-1 text-slate-600">' + category.emoji + ' ' + esc(categoryLabel) + '</span>' +
+                (prefLabel ? '<span class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-slate-500">🗾 ' + esc(prefLabel) + '</span>' : '') +
+                (subLabel ? '<span class="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-amber-700">' + sub.emoji + ' ' + esc(subLabel) + '</span>' : '') +
+                '</div>' +
+                '<h3 class="text-base font-bold text-slate-900 leading-snug">' + title + '</h3>' +
+                (subTitle ? '<p class="text-sm font-medium text-slate-500 -mt-1.5">' + subTitle + '</p>' : '') +
+                '<p class="text-sm text-slate-600 leading-relaxed">' + desc + '</p>' +
+                (subDesc ? '<p class="text-sm text-slate-500 leading-relaxed">' + subDesc + '</p>' : '') +
+                (spot.city ? '<p class="mt-auto text-[11px] text-slate-400">📍 ' + esc(spot.city) + '</p>' : '<p class="mt-auto"></p>') +
+                '<div class="flex flex-wrap gap-2 pt-1">' +
+                '<a href="' + esc(spot.officialUrl) + '" target="_blank" rel="noopener noreferrer" ' +
+                'class="inline-flex items-center gap-1.5 rounded-xl bg-brand-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-brand-700 transition">' +
+                (isReference ? '🔗 ' + esc(t('referenceSite')) : '🌐 ' + esc(t('officialSite'))) + '</a>' +
+                '<a href="' + esc(mapsUrl(spot)) + '" target="_blank" rel="noopener noreferrer" ' +
+                'class="inline-flex items-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs font-bold text-slate-700 hover:border-brand-300 hover:text-brand-700 hover:bg-brand-50 transition">📍 ' + esc(t('googleMaps')) + '</a>' +
+                '</div></div></article>';
+        }
+
+        function renderGrid() {
+            const grid = $('#spotGrid');
+            const empty = $('#emptyState');
+            const list = sortSpots(SPOTS.filter(function (spot) { return matches(spot); }));
+            const shown = list.slice(0, state.visible);
+
+            grid.innerHTML = shown.map(spotCard).join('');
+            empty.hidden = list.length > 0;
+
+            /* incremental rendering: keep the page fast with thousands of spots */
+            const remaining = list.length - shown.length;
+            $('#loadMoreWrap').hidden = remaining <= 0;
+            $('#loadMoreCount').textContent = remaining > 0 ? '(' + t('remaining') + ' ' + remaining + ')' : '';
+
+            const regionLabel = state.region === 'all' ? t('allRegions') : regionName(state.region);
+            const categoryLabel = state.category === 'all' ? t('allGenres') : categoryName(state.category);
+            const subLabel = state.subGenre === 'all'
+                ? (subGenresOf(state.category).length ? t('allSubGenres') : '')
+                : subGenreName(state.category, state.subGenre);
+
+            const regionParts = [regionLabel];
+            if (state.prefecture !== 'all') { regionParts.push(prefName(state.prefecture)); }
+            const genreParts = [categoryLabel];
+            if (subLabel) { genreParts.push(subLabel); }
+
+            $('#resultsTitle').textContent = t('resultsTitle') + ' · ' +
+                regionParts.join(' / ') + ' ／ ' + genreParts.join(' · ');
+            $('#resultsMeta').textContent = t('showing') + ' ' + shown.length + ' ' + t('of') + ' ' +
+                list.length + ' ' + t('unit') + ' (' + SPOTS.length + ')';
+            $('#activeFilterSummary').textContent =
+                t('regionLabel') + ': ' + regionParts.join(' / ') + '　|　' +
+                t('genreLabel') + ': ' + genreParts.join(' · ') +
+                (state.query ? '　|　🔍 ' + state.query : '');
+            $('#regionHint').textContent = regionParts.join(' / ') + ' — ' + list.length + ' ' + t('unit');
+        }
+
+        function applyI18n() {
+            document.documentElement.lang = state.lang === 'ja' ? 'ja' : 'en';
+            document.querySelectorAll('[data-i18n]').forEach(function (el) {
+                el.textContent = t(el.getAttribute('data-i18n'));
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+                el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
+            });
+            document.querySelectorAll('.lang-btn').forEach(function (btn) {
+                const active = btn.getAttribute('data-lang') === state.lang;
+                btn.className = 'lang-btn px-2.5 sm:px-3 py-1.5 rounded-full transition ' +
+                    (active ? 'bg-white text-slate-900 shadow' : 'text-slate-300 hover:text-white');
+            });
+        }
+
+        /* ================= state changes & events ================= */
+        function refresh() {
+            renderRegionTabs();
+            renderPrefectureTabs();
+            renderCategoryChips();
+            renderSubGenreChips();
+            renderGrid();
+        }
+
+        function changeFilter(patch) {
+            Object.keys(patch).forEach(function (key) { state[key] = patch[key]; });
+            state.visible = PAGE_SIZE;
+            refresh();
+        }
+
+        function resetFilters() {
+            state.region = 'all';
+            state.prefecture = 'all';
+            state.category = 'all';
+            state.subGenre = 'all';
+            state.query = '';
+            $('#searchInput').value = '';
+            changeFilter({});
+        }
+
+        function setLang(lang) {
+            state.lang = ['en', 'ja', 'both'].indexOf(lang) !== -1 ? lang : 'en';
+            try { window.localStorage.setItem('leisureLang', state.lang); } catch (e) { /* ignore */ }
+            applyI18n();
+            refresh();
+        }
+
+        function debounce(fn, wait) {
+            let timer = null;
+            return function () {
+                const args = arguments;
+                clearTimeout(timer);
+                timer = setTimeout(function () { fn.apply(null, args); }, wait);
+            };
+        }
+
+        function init() {
+            /* Static labels first (so the page is readable in the chosen language). */
+            let savedLang = 'en';
+            try { savedLang = window.localStorage.getItem('leisureLang') || 'en'; } catch (e) { /* ignore */ }
+            state.lang = ['en', 'ja', 'both'].indexOf(savedLang) !== -1 ? savedLang : 'en';
+
+            $('#year').textContent = String(new Date().getFullYear());
+            $('#statSpots').textContent = String(SPOTS.length);
+            $('#statRegions').textContent = String(REGIONS.length);
+            $('#statCategories').textContent = String(CATEGORIES.length);
+
+            applyI18n();
+
+            if (!SPOTS.length || !REGIONS.length || !CATEGORIES.length) {
+                $('#dataWarning').hidden = false;
+                return;
+            }
+
+            $('#regionTabs').addEventListener('click', function (event) {
+                const btn = event.target.closest('button[data-region]');
+                if (!btn) { return; }
+                const regionId = btn.getAttribute('data-region');
+                const pref = state.prefecture === 'all' ? null : prefectureById[state.prefecture];
+                changeFilter({
+                    region: regionId,
+                    prefecture: (pref && regionId !== 'all' && pref.region !== regionId) ? 'all' : state.prefecture
+                });
+            });
+
+            $('#prefectureTabs').addEventListener('click', function (event) {
+                const btn = event.target.closest('button[data-prefecture]');
+                if (!btn) { return; }
+                changeFilter({ prefecture: btn.getAttribute('data-prefecture') });
+            });
+
+            $('#categoryChips').addEventListener('click', function (event) {
+                const btn = event.target.closest('button[data-category]');
+                if (!btn) { return; }
+                changeFilter({ category: btn.getAttribute('data-category'), subGenre: 'all' });
+            });
+
+            $('#subGenreChips').addEventListener('click', function (event) {
+                const btn = event.target.closest('button[data-subgenre]');
+                if (!btn) { return; }
+                changeFilter({ subGenre: btn.getAttribute('data-subgenre') });
+            });
+
+            $('#loadMoreBtn').addEventListener('click', function () {
+                state.visible += PAGE_SIZE;
+                renderGrid();
+            });
+
+            $('#searchInput').addEventListener('input', debounce(function (event) {
+                state.query = String(event.target.value || '').trim().toLowerCase();
+                state.visible = PAGE_SIZE;
+                refresh();
+            }, 160));
+
+            $('#sortSelect').addEventListener('change', function (event) {
+                state.sort = event.target.value;
+                state.visible = PAGE_SIZE;
+                refresh();
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    setLang(btn.getAttribute('data-lang'));
+                });
+            });
+
+            $('#resetBtn').addEventListener('click', resetFilters);
+            $('#emptyResetBtn').addEventListener('click', resetFilters);
+
+            const toTop = $('#toTop');
+            window.addEventListener('scroll', function () {
+                toTop.hidden = window.scrollY < 600;
+            }, { passive: true });
+            toTop.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            refresh();
+        }
+
+        /* ================= bootstrap ================= */
+        function bootstrap() {
+            /* Normal case: data.html was executed as a classic script. */
+            if (Array.isArray(window.LEISURE_DATA) && window.LEISURE_DATA.length) {
+                setData({
+                    regions: window.LEISURE_REGIONS,
+                    categories: window.LEISURE_CATEGORIES,
+                    prefectures: window.LEISURE_PREFECTURES,
+                    subGenres: window.LEISURE_SUBGENRES,
+                    spots: window.LEISURE_DATA
+                });
+                init();
+                return;
+            }
+
+            /* Fallback: some browsers refuse to execute a .html file as a script
+               (for example Chrome on file://). data.html is then loaded inside a
+               hidden iframe and hands the same data over with postMessage(). */
+            let received = false;
+
+            window.addEventListener('message', function (event) {
+                const data = event && event.data;
+                if (received || !data || data.type !== 'japan-leisure-data') { return; }
+                received = true;
+                setData(data.payload || {});
+                if (SPOTS.length) {
+                    init();
+                } else {
+                    $('#dataWarning').hidden = false;
+                }
+            });
+
+            try {
+                const frame = document.createElement('iframe');
+                frame.setAttribute('aria-hidden', 'true');
+                frame.setAttribute('title', 'spot data');
+                frame.style.position = 'absolute';
+                frame.style.width = '0';
+                frame.style.height = '0';
+                frame.style.border = '0';
+                frame.style.visibility = 'hidden';
+                frame.src = 'data.html';
+                document.body.appendChild(frame);
+            } catch (e) {
+                $('#dataWarning').hidden = false;
+            }
+
+            window.setTimeout(function () {
+                if (!received) { $('#dataWarning').hidden = false; }
+            }, 5000);
+        }
+
+        bootstrap();
+    })();
+
+    </script>
+</body>
+</html>
