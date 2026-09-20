@@ -1,697 +1,436 @@
-<!DOCTYPE html>
-
-<html lang="ja">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>思いつき日本紹介サイト</title>
-
-    <!-- Google Fonts: 游ゴシックおよび上品な欧文フォント -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
-
-    <style>
-
-        :root {
-
-            --bg-color: #0c0d10;
-
-            --card-bg: #14161b;
-
-            --card-border: rgba(212, 175, 55, 0.2);
-
-            --gold: #d4af37;
-
-            --gold-light: #f3e5ab;
-
-            --text-main: #e2e8f0;
-
-            --text-muted: #94a3b8;
-
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-
-        }
-
-
-
-        * {
-
-            box-sizing: border-box;
-
-            margin: 0;
-
-            padding: 0;
-
-        }
-
-
-
-        body {
-
-            background-color: var(--bg-color);
-
-            color: var(--text-main);
-
-            font-family: 'Noto Serif JP', serif;
-
-            font-weight: 300;
-
-            line-height: 2.2;
-
-            letter-spacing: 0.08em;
-
-            overflow-x: hidden;
-
-        }
-
-
-
-        /* 繊細な背景グラデーション効果 */
-
-        body::before {
-
-            content: '';
-
-            position: fixed;
-
-            top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            background: 
-
-                radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.04) 0%, transparent 40%),
-
-                radial-gradient(circle at 85% 80%, rgba(56, 189, 248, 0.03) 0%, transparent 40%);
-
-            z-index: -1;
-
-            pointer-events: none;
-
-        }
-
-
-
-        .container {
-
-            max-width: 1000px;
-
-            margin: 0 auto;
-
-            padding: 6rem 2rem 4rem;
-
-        }
-
-
-
-        /* ヘッダーセクション */
-
-        header {
-
-            text-align: center;
-
-            margin-bottom: 5rem;
-
-            position: relative;
-
-        }
-
-
-
-        header::after {
-
-            content: '';
-
-            display: block;
-
-            width: 60px;
-
-            height: 1px;
-
-            background: var(--gold);
-
-            margin: 2.5rem auto 0;
-
-        }
-
-
-
-        .site-subtitle {
-
-            font-family: 'Cinzel', serif;
-
-            font-size: 0.85rem;
-
-            letter-spacing: 0.3em;
-
-            color: var(--gold);
-
-            text-transform: uppercase;
-
-            margin-bottom: 1rem;
-
-            opacity: 0.9;
-
-        }
-
-
-
-        h1 {
-
-            font-size: 2.4rem;
-
-            font-weight: 400;
-
-            letter-spacing: 0.15em;
-
-            color: #fff;
-
-            margin-bottom: 0;
-
-        }
-
-
-
-        /* 免責事項バナー（ハイソサエティな控えめかつ洗練されたトーン） */
-
-        .notice-box {
-
-            background: rgba(20, 22, 27, 0.7);
-
-            border-left: 2px solid var(--gold);
-
-            padding: 1.8rem 2.2rem;
-
-            margin-bottom: 5rem;
-
-            font-size: 0.9rem;
-
-            color: var(--text-muted);
-
-            line-height: 2;
-
-            backdrop-filter: blur(10px);
-
-        }
-
-
-
-        .notice-box span {
-
-            color: var(--gold-light);
-
-            font-weight: 400;
-
-        }
-
-
-
-        /* セクションタイトル */
-
-        .section-title {
-
-            font-family: 'Cinzel', serif;
-
-            font-size: 1.1rem;
-
-            letter-spacing: 0.25em;
-
-            color: var(--gold);
-
-            text-transform: uppercase;
-
-            margin-bottom: 2rem;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 1rem;
-
-        }
-
-
-
-        .section-title::after {
-
-            content: '';
-
-            flex: 1;
-
-            height: 1px;
-
-            background: rgba(212, 175, 55, 0.15);
-
-        }
-
-
-
-        /* 紹介コンテンツグリッド */
-
-        .grid {
-
-            display: grid;
-
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-
-            gap: 2.5rem;
-
-            margin-bottom: 6rem;
-
-        }
-
-
-
-        .card {
-
-            background: var(--card-bg);
-
-            border: 1px solid var(--card-border);
-
-            padding: 3rem 2.5rem;
-
-            text-decoration: none;
-
-            color: inherit;
-
-            position: relative;
-
-            transition: var(--transition);
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: space-between;
-
-        }
-
-
-
-        .card::before {
-
-            content: '';
-
-            position: absolute;
-
-            top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 2px;
-
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-
-            opacity: 0;
-
-            transition: var(--transition);
-
-        }
-
-
-
-        .card:hover {
-
-            transform: translateY(-6px);
-
-            border-color: rgba(212, 175, 55, 0.5);
-
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.05);
-
-        }
-
-
-
-        .card:hover::before {
-
-            opacity: 1;
-
-        }
-
-
-
-        .card-number {
-
-            font-family: 'Cinzel', serif;
-
-            font-size: 0.8rem;
-
-            color: var(--gold);
-
-            letter-spacing: 0.2em;
-
-            margin-bottom: 1rem;
-
-        }
-
-
-
-        .card h2 {
-
-            font-size: 1.4rem;
-
-            font-weight: 400;
-
-            letter-spacing: 0.1em;
-
-            margin-bottom: 1.2rem;
-
-            color: #fff;
-
-        }
-
-
-
-        .card p {
-
-            font-size: 0.92rem;
-
-            color: var(--text-muted);
-
-            margin-bottom: 2rem;
-
-            line-height: 1.9;
-
-        }
-
-
-
-        .card-link-text {
-
-            font-family: 'Cinzel', serif;
-
-            font-size: 0.8rem;
-
-            letter-spacing: 0.2em;
-
-            color: var(--gold);
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 0.5rem;
-
-            transition: var(--transition);
-
-        }
-
-
-
-        .card:hover .card-link-text {
-
-            gap: 1rem;
-
-            color: var(--gold-light);
-
-        }
-
-
-
-        /* 後段リンク紹介セクション */
-
-        .links-section {
-
-            background: linear-gradient(135deg, rgba(20, 22, 27, 0.9), rgba(12, 13, 16, 0.9));
-
-            border: 1px solid var(--card-border);
-
-            padding: 3rem;
-
-            margin-bottom: 4rem;
-
-        }
-
-
-
-        .links-list {
-
-            list-style: none;
-
-            margin-top: 1.5rem;
-
-        }
-
-
-
-        .links-list li {
-
-            margin-bottom: 1rem;
-
-        }
-
-
-
-        .links-list li:last-child {
-
-            margin-bottom: 0;
-
-        }
-
-
-
-        .sub-link {
-
-            color: var(--text-main);
-
-            text-decoration: none;
-
-            font-size: 0.95rem;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 0.8rem;
-
-            transition: var(--transition);
-
-            border-bottom: 1px solid transparent;
-
-            padding-bottom: 2px;
-
-        }
-
-
-
-        .sub-link::before {
-
-            content: '◆';
-
-            font-size: 0.5rem;
-
-            color: var(--gold);
-
-        }
-
-
-
-        .sub-link:hover {
-
-            color: var(--gold-light);
-
-            border-color: var(--gold);
-
-            transform: translateX(4px);
-
-        }
-
-
-
-        /* フッター */
-
-        footer {
-
-            text-align: center;
-
-            font-family: 'Cinzel', serif;
-
-            font-size: 0.75rem;
-
-            letter-spacing: 0.2em;
-
-            color: var(--text-muted);
-
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-
-            padding-top: 3rem;
-
-        }
-
-
-
-        /* レスポンシブ調整 */
-
-        @media (max-width: 768px) {
-
-            .container {
-
-                padding: 4rem 1.5rem 2rem;
-
-            }
-
-            h1 {
-
-                font-size: 1.8rem;
-
-            }
-
-            .card {
-
-                padding: 2.2rem 1.8rem;
-
-            }
-
-            .links-section {
-
-                padding: 2rem 1.5rem;
-
-            }
-
-        }
-
-    </style>
-
-</head>
-
-<body>
-
-
-
-    <div class="container">
-
-        <!-- ヘッダー -->
-
-        <header>
-
-            <div class="site-subtitle">Curated Collection of Japan</div>
-
-            <h1>思いつき日本紹介サイト</h1>
-
-        </header>
-
-
-
-        <!-- 注意事項 -->
-
-        <div class="notice-box">
-
-            <span>Notice：</span>当サイトの内容には間違いが含まれている可能性がございます。実際にお出かけになられる場合や、掲載されている情報をご利用される際は、必ずご自身で最新情報をご確認の上、慎重に行動していただきますようお願い申し上げます。
-
-        </div>
-
-
-
-        <!-- メイン紹介コンテンツ -->
-
-        <main>
-
-            <div class="section-title">Feature Destinations</div>
-
-            <div class="grid">
-
-                <!-- 社寺紹介 -->
-
-                <a href="https://shinzan35.github.io/JapanMyCalender/annai1.html" class="card" target="_blank" rel="noopener noreferrer">
-
-                    <div>
-
-                        <div class="card-number">01 / TEMPLE & SHRINE</div>
-
-                        <h2>社寺紹介</h2>
-
-                        <p>静寂に包まれた歴史ある社寺のたたずまいと、日本独自の精神文化が息づく聖地をご案内いたします。</p>
-
-                    </div>
-
-                    <div class="card-link-text">
-
-                        VIEW ARCHIVE &rarr;
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- 観光紹介 -->
-
-                <a href="https://shinzan35.github.io/JapanMyCalender/index.html" class="card" target="_blank" rel="noopener noreferrer">
-
-                    <div>
-
-                        <div class="card-number">02 / SIGHTSEEING</div>
-
-                        <h2>観光紹介</h2>
-
-                        <p>四季折々の美しい風景や、心動かされる日本各地の魅力的な観光スポットを独自の視点で巡ります。</p>
-
-                    </div>
-
-                    <div class="card-link-text">
-
-                        VIEW ARCHIVE &rarr;
-
-                    </div>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- 後段のリンク紹介 -->
-
-            <section class="links-section">
-
-                <div class="section-title" style="margin-bottom: 1.5rem;">Related Links</div>
-
-                <ul class="links-list">
-
-                    <li>
-
-                        <a href="https://shinzan35.github.io/marketing.html" class="sub-link" target="_blank" rel="noopener noreferrer">
-
-                            マーケティング関連ページ（参考資料・関連情報）
-
-                        </a>
-
-                    </li>
-
-                </ul>
-
-            </section>
-
-        </main>
-
-
-
-        <!-- フッター -->
-
-        <footer>
-
-            &copy; 2026 思いつき日本紹介サイト All Rights Reserved.
-
-        </footer>
-
-    </div>
-
-
-
-</body>
-
+<!DOCTYPE html> 
+<html lang="ja"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>思いつき日本紹介サイト / Curated Collection of Japan</title> 
+    <!-- Google Fonts: 游ゴシックおよび上品な欧文フォント --> 
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet"> 
+    <style> 
+        :root { 
+            --bg-color: #0c0d10; 
+            --card-bg: #14161b; 
+            --card-border: rgba(212, 175, 55, 0.2); 
+            --gold: #d4af37; 
+            --gold-light: #f3e5ab; 
+            --text-main: #e2e8f0; 
+            --text-muted: #94a3b8; 
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+        } 
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        } 
+
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            font-family: 'Noto Serif JP', serif; 
+            font-weight: 300; 
+            line-height: 2.2; 
+            letter-spacing: 0.08em; 
+            overflow-x: hidden; 
+        } 
+
+        /* 繊細な背景グラデーション効果 */ 
+        body::before { 
+            content: ''; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background:  
+                radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.04) 0%, transparent 40%), 
+                radial-gradient(circle at 85% 80%, rgba(56, 189, 248, 0.03) 0%, transparent 40%); 
+            z-index: -1; 
+            pointer-events: none; 
+        } 
+
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 4rem 2rem 4rem; 
+            position: relative; 
+        } 
+
+        /* 言語切り替えボタンエリア（最上部右側） */ 
+        .lang-switch-container { 
+            display: flex; 
+            justify-content: flex-end; 
+            margin-bottom: 2rem; 
+        } 
+
+        .lang-btn { 
+            background: var(--card-bg); 
+            border: 1px solid var(--card-border); 
+            color: var(--gold); 
+            font-family: 'Cinzel', serif; 
+            font-size: 0.8rem; 
+            letter-spacing: 0.15em; 
+            padding: 0.5rem 1.2rem; 
+            cursor: pointer; 
+            transition: var(--transition); 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+        } 
+
+        .lang-btn:hover { 
+            background: rgba(212, 175, 55, 0.1); 
+            border-color: var(--gold); 
+            color: var(--gold-light); 
+        } 
+
+        /* 言語表示の切り替え制御 */ 
+        .lang-en { 
+            display: none; 
+        } 
+
+        body.show-english .lang-ja { 
+            display: none; 
+        } 
+
+        body.show-english .lang-en { 
+            display: inline; 
+        } 
+
+        body.show-english div.lang-en, 
+        body.show-english p.lang-en, 
+        body.show-english span.lang-en { 
+            display: block; 
+        } 
+
+        /* ヘッダーセクション */ 
+        header { 
+            text-align: center; 
+            margin-bottom: 5rem; 
+            position: relative; 
+        } 
+
+        header::after { 
+            content: ''; 
+            display: block; 
+            width: 60px; 
+            height: 1px; 
+            background: var(--gold); 
+            margin: 2.5rem auto 0; 
+        } 
+
+        .site-subtitle { 
+            font-family: 'Cinzel', serif; 
+            font-size: 0.85rem; 
+            letter-spacing: 0.3em; 
+            color: var(--gold); 
+            text-transform: uppercase; 
+            margin-bottom: 1rem; 
+            opacity: 0.9; 
+        } 
+
+        h1 { 
+            font-size: 2.4rem; 
+            font-weight: 400; 
+            letter-spacing: 0.15em; 
+            color: #fff; 
+            margin-bottom: 0; 
+        } 
+
+        /* 免責事項バナー */ 
+        .notice-box { 
+            background: rgba(20, 22, 27, 0.7); 
+            border-left: 2px solid var(--gold); 
+            padding: 1.8rem 2.2rem; 
+            margin-bottom: 5rem; 
+            font-size: 0.9rem; 
+            color: var(--text-muted); 
+            line-height: 2; 
+            backdrop-filter: blur(10px); 
+        } 
+
+        .notice-box span { 
+            color: var(--gold-light); 
+            font-weight: 400; 
+        } 
+
+        /* セクションタイトル */ 
+        .section-title { 
+            font-family: 'Cinzel', serif; 
+            font-size: 1.1rem; 
+            letter-spacing: 0.25em; 
+            color: var(--gold); 
+            text-transform: uppercase; 
+            margin-bottom: 2rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem; 
+        } 
+
+        .section-title::after { 
+            content: ''; 
+            flex: 1; 
+            height: 1px; 
+            background: rgba(212, 175, 55, 0.15); 
+        } 
+
+        /* 紹介コンテンツグリッド */ 
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 2.5rem; 
+            margin-bottom: 6rem; 
+        } 
+
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--card-border); 
+            padding: 3rem 2.5rem; 
+            text-decoration: none; 
+            color: inherit; 
+            position: relative; 
+            transition: var(--transition); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        } 
+
+        .card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 2px; 
+            background: linear-gradient(90deg, transparent, var(--gold), transparent); 
+            opacity: 0; 
+            transition: var(--transition); 
+        } 
+
+        .card:hover { 
+            transform: translateY(-6px); 
+            border-color: rgba(212, 175, 55, 0.5); 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.05); 
+        } 
+
+        .card:hover::before { 
+            opacity: 1; 
+        } 
+
+        .card-number { 
+            font-family: 'Cinzel', serif; 
+            font-size: 0.8rem; 
+            color: var(--gold); 
+            letter-spacing: 0.2em; 
+            margin-bottom: 1rem; 
+        } 
+
+        .card h2 { 
+            font-size: 1.4rem; 
+            font-weight: 400; 
+            letter-spacing: 0.1em; 
+            margin-bottom: 1.2rem; 
+            color: #fff; 
+        } 
+
+        .card p { 
+            font-size: 0.92rem; 
+            color: var(--text-muted); 
+            margin-bottom: 2rem; 
+            line-height: 1.9; 
+        } 
+
+        .card-link-text { 
+            font-family: 'Cinzel', serif; 
+            font-size: 0.8rem; 
+            letter-spacing: 0.2em; 
+            color: var(--gold); 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+            transition: var(--transition); 
+        } 
+
+        .card:hover .card-link-text { 
+            gap: 1rem; 
+            color: var(--gold-light); 
+        } 
+
+        /* 後段リンク紹介セクション */ 
+        .links-section { 
+            background: linear-gradient(135deg, rgba(20, 22, 27, 0.9), rgba(12, 13, 16, 0.9)); 
+            border: 1px solid var(--card-border); 
+            padding: 3rem; 
+            margin-bottom: 4rem; 
+        } 
+
+        .links-list { 
+            list-style: none; 
+            margin-top: 1.5rem; 
+        } 
+
+        .links-list li { 
+            margin-bottom: 1rem; 
+        } 
+
+        .links-list li:last-child { 
+            margin-bottom: 0; 
+        } 
+
+        .sub-link { 
+            color: var(--text-main); 
+            text-decoration: none; 
+            font-size: 0.95rem; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.8rem; 
+            transition: var(--transition); 
+            border-bottom: 1px solid transparent; 
+            padding-bottom: 2px; 
+        } 
+
+        .sub-link::before { 
+            content: '◆'; 
+            font-size: 0.5rem; 
+            color: var(--gold); 
+        } 
+
+        .sub-link:hover { 
+            color: var(--gold-light); 
+            border-color: var(--gold); 
+            transform: translateX(4px); 
+        } 
+
+        /* フッター */ 
+        footer { 
+            text-align: center; 
+            font-family: 'Cinzel', serif; 
+            font-size: 0.75rem; 
+            letter-spacing: 0.2em; 
+            color: var(--text-muted); 
+            border-top: 1px solid rgba(255, 255, 255, 0.05); 
+            padding-top: 3rem; 
+        } 
+
+        /* レスポンシブ調整 */ 
+        @media (max-width: 768px) { 
+            .container { 
+                padding: 3rem 1.5rem 2rem; 
+            } 
+            h1 { 
+                font-size: 1.8rem; 
+            } 
+            .card { 
+                padding: 2.2rem 1.8rem; 
+            } 
+            .links-section { 
+                padding: 2rem 1.5rem; 
+            } 
+        } 
+    </style> 
+</head> 
+<body> 
+
+    <div class="container"> 
+        <!-- 上部右側の言語切り替えボタン --> 
+        <div class="lang-switch-container"> 
+            <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()"> 
+                <span>🌐</span> <span id="langBtnText">English</span> 
+            </button> 
+        </div> 
+
+        <!-- ヘッダー --> 
+        <header> 
+            <div class="site-subtitle">Curated Collection of Japan</div> 
+            <h1> 
+                <span class="lang-ja">思いつき日本紹介サイト</span> 
+                <span class="lang-en">Random Introduction to Japan</span> 
+            </h1> 
+        </header> 
+
+        <!-- 注意事項 --> 
+        <div class="notice-box"> 
+            <span>Notice：</span> 
+            <span class="lang-ja">当サイトの内容には間違いが含まれている可能性がございます。実際にお出かけになられる場合や、掲載されている情報をご利用される際は、必ずご自身で最新情報をご確認の上、慎重に行動していただきますようお願い申し上げます。</span> 
+            <span class="lang-en">Please note that the content on this site may contain errors. When visiting places or using the provided information, please make sure to check the latest details yourself and exercise caution.</span> 
+        </div> 
+
+        <!-- メイン紹介コンテンツ --> 
+        <main> 
+            <div class="section-title">Feature Destinations</div> 
+            <div class="grid"> 
+                <!-- 社寺紹介 --> 
+                <a href="https://shinzan35.github.io/JapanMyCalender/annai1.html" class="card" target="_blank" rel="noopener noreferrer"> 
+                    <div> 
+                        <div class="card-number">01 / TEMPLE & SHRINE</div> 
+                        <h2> 
+                            <span class="lang-ja">社寺紹介</span> 
+                            <span class="lang-en">Temples & Shrines</span> 
+                        </h2> 
+                        <p> 
+                            <span class="lang-ja">静寂に包まれた歴史ある社寺のたたずまいと、日本独自の精神文化が息づく聖地をご案内いたします。</span> 
+                            <span class="lang-en">Explore historic temples and shrines wrapped in tranquility, along with sacred sites where Japan's unique spiritual culture breathes.</span> 
+                        </p> 
+                    </div> 
+                    <div class="card-link-text"> 
+                        VIEW ARCHIVE &rarr; 
+                    </div> 
+                </a> 
+
+                <!-- 観光紹介 --> 
+                <a href="https://shinzan35.github.io/JapanMyCalender/index.html" class="card" target="_blank" rel="noopener noreferrer"> 
+                    <div> 
+                        <div class="card-number">02 / SIGHTSEEING</div> 
+                        <h2> 
+                            <span class="lang-ja">観光紹介</span> 
+                            <span class="lang-en">Sightseeing Guide</span> 
+                        </h2> 
+                        <p> 
+                            <span class="lang-ja">四季折々の美しい風景や、心動かされる日本各地の魅力的な観光スポットを独自の視点で巡ります。</span> 
+                            <span class="lang-en">Discover beautiful seasonal landscapes and fascinating tourist spots across Japan from a unique perspective.</span> 
+                        </p> 
+                    </div> 
+                    <div class="card-link-text"> 
+                        VIEW ARCHIVE &rarr; 
+                    </div> 
+                </a> 
+            </div> 
+
+            <!-- 後段のリンク紹介 --> 
+            <section class="links-section"> 
+                <div class="section-title" style="margin-bottom: 1.5rem;">Related Links</div> 
+                <ul class="links-list"> 
+                    <li> 
+                        <a href="https://shinzan35.github.io/marketing.html" class="sub-link" target="_blank" rel="noopener noreferrer"> 
+                            <span class="lang-ja">マーケティング関連ページ（参考資料・関連情報）</span> 
+                            <span class="lang-en">Marketing Related Page (Reference Materials & Related Information)</span> 
+                        </a> 
+                    </li> 
+                </ul> 
+            </section> 
+        </main> 
+
+        <!-- フッター --> 
+        <footer> 
+            &copy; 2026 思いつき日本紹介サイト All Rights Reserved. 
+        </footer> 
+    </div> 
+
+    <script> 
+        function toggleLanguage() { 
+            const body = document.body; 
+            const langBtnText = document.getElementById('langBtnText'); 
+            
+            body.classList.toggle('show-english'); 
+            
+            if (body.classList.contains('show-english')) { 
+                langBtnText.textContent = '日本語'; 
+            } else { 
+                langBtnText.textContent = 'English'; 
+            } 
+        } 
+    </script> 
+</body> 
 </html>
