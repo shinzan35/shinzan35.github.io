@@ -1,1 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy & Terms of Use - QR Code Omakase</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #334155;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .lang-switch {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .lang-switch button {
+            background-color: #e2e8f0;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-left: 5px;
+            transition: background-color 0.2s;
+        }
+        .lang-switch button.active, .lang-switch button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        h1 {
+            font-size: 1.8rem;
+            color: #0f172a;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.3rem;
+            color: #1e293b;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+            white-space: pre-line;
+        }
+        ul, ol {
+            margin-top: 5px;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .section-block {
+            margin-bottom: 25px;
+        }
+        .divider {
+            margin: 50px 0;
+            border: 0;
+            border-top: 1px solid var(--border-color);
+        }
+        .nav-links {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .nav-links a {
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .lang-content {
+            display: none;
+        }
+        .lang-content.active {
+            display: block;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <!-- 言語切り替えボタン -->
+    <div class="lang-switch">
+        <button id="btn-ja" onclick="setLanguage('ja')">日本語</button>
+        <button id="btn-en" onclick="setLanguage('en')">English</button>
+    </div>
+
+    <!-- ================= 日本語コンテンツ ================= -->
+    <div id="content-ja" class="lang-content">
+        <div class="nav-links">
+            <a href="#privacy-ja">プライバシーポリシー</a> | <a href="#terms-ja">利用規約</a>
+        </div>
+
+        <section id="privacy-ja">
+            <h1>プライバシーポリシー</h1>
+            <div class="section-block">
+                <p>shinzan（以下、「当方」といいます。）は、スマートフォン向けアプリケーション「QRコードおまかせ」（以下、「本アプリ」といいます。）におけるユーザー情報の取扱いについて、以下のとおり定めます。</p>
+            </div>
+            <div class="section-block">
+                <h2>第1条（取得する情報）</h2>
+                <p>本アプリは、以下の情報を取り扱います。</p>
+                <ul>
+                    <li><strong>ユーザーが入力または保存する情報：</strong>QRコードの作成データ、読み取りデータ、履歴情報など<br>これらの情報は、本アプリの機能を提供するためにユーザーの端末内（ローカル環境）にのみ保存・蓄積されます。当方が管理する外部のサーバーへ送信、収集または保管されることは一切ありません。</li>
+                    <li><strong>広告配信に関する情報：</strong>本アプリは他社アプリやWebサイトを横断する追跡（トラッキング）を行いません。なお、本アプリで利用する広告配信サービスにおいて、不正クリックの防止、配信地域の適正化、および表示回数の正常な計測といった技術的・運用の目的においてのみ、広告配信事業者（Google社）によりIPアドレスや端末情報等の最小限のデータが処理される場合があります。これらがユーザー個人を特定・追跡する目的で使用されることはありません。</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h2>第2条（利用目的）</h2>
+                <p>本アプリは以下の目的でユーザー情報を利用します。</p>
+                <ul>
+                    <li>QRコード作成・読み取り機能の提供</li>
+                    <li>履歴管理機能の提供</li>
+                    <li>カメラ等の端末機能の連携</li>
+                    <li>広告表示および広告効果測定</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h2>第3条（カメラ・写真ライブラリへのアクセス）</h2>
+                <p>本アプリは、ユーザーが任意にQRコードを読み取る目的、または画像を読み込む目的で、カメラおよび写真ライブラリへアクセスする場合があります。</p>
+            </div>
+            <div class="section-block">
+                <h2>第4条（広告サービス）</h2>
+                <p>本アプリはGoogle AdMobを利用しています。本アプリでは非パーソナライズ広告の設定を行っており、ユーザーを特定した追跡行為（トラッキング）は行いません。広告配信システムを正常かつ安全に運用するための情報処理につきましては、Googleのプライバシーポリシーをご確認ください。<br>
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a></p>
+            </div>
+            <div class="section-block">
+                <h2>第5条（第三者提供）</h2>
+                <p>当方は法令に基づく場合を除き、ユーザーの同意なく個人情報またはユーザー情報を第三者へ提供しません。ただし、広告配信サービスの利用に伴い、広告配信事業者が前述の通り技術的運用に必要な最小限の情報を処理する場合があります。</p>
+            </div>
+            <div class="section-block">
+                <h2>第6条（データの管理）</h2>
+                <p>本アプリに保存されるQRコードデータ、履歴、その他のデータは、ユーザー自身の責任において管理するものとします。当方はユーザーデータの保存、維持、バックアップ、復元、移行、同期または保全を保証しません。本アプリはユーザーデータを当方の管理するサーバーに保存しておらず、当方はユーザーデータへアクセスすることができません。そのため、当方はデータの復旧、再発行または復元対応を行うことができません。</p>
+            </div>
+            <div class="section-block">
+                <h2>第7条（プライバシーポリシーの変更）</h2>
+                <p>当方は必要に応じて本ポリシーを変更することがあります。変更後の内容は本アプリ内または適切な方法で公表した時点から効力を生じるものとします。</p>
+            </div>
+            <div class="section-block">
+                <h2>第8条（お問い合わせ）</h2>
+                <p>メールアドレス：shinzan35@ymail.ne.jp<br>制定日：2026年6月6日 最終改定日：2026年11月7日</p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="terms-ja">
+            <h1>利用規約</h1>
+            <div class="section-block">
+                <p>本規約は、shinzan（以下、「当方」といいます。）が提供するアプリケーション「QRコードおまかせ」（以下、「本アプリ」といいます。）の利用条件を定めるものです。</p>
+            </div>
+            <div class="section-block">
+                <h2>第1条（適用）</h2>
+                <ol>
+                    <li>本アプリを利用した時点で、本規約に同意したものとみなされます。</li>
+                    <li>18歳未満を含む未成年のユーザーは、法定代理人（親権者等）の同意を得たうえで本アプリを利用するものとします。</li>
+                </ol>
+            </div>
+            <div class="section-block">
+                <h2>第2条（自己責任による利用）</h2>
+                <p>ユーザーは自己の責任と判断において本アプリを利用するものとします。</p>
+            </div>
+            <div class="section-block">
+                <h2>第3条（データ管理およびバックアップ）</h2>
+                <ol>
+                    <li>本アプリに保存されるQRコードデータ、履歴、その他のデータ（以下「ユーザーデータ」といいます。）は、ユーザー自身の責任において管理するものとします。</li>
+                    <li>本アプリは、ユーザーデータを当方の管理するサーバーへ送信または保存しておらず、原則としてユーザーの端末内に保存されます。</li>
+                    <li>当方は、ユーザーデータの保存、維持、バックアップ、同期、移行、復元、保全その他これらに類する事項について一切保証しません。</li>
+                    <li>ユーザーは、重要なデータや記録その他の情報について、必要に応じてスクリーンショットの保存、端末バックアップその他適切な方法により、自らバックアップを行うものとします。</li>
+                    <li>当方はユーザーデータを保有していないため、データの復旧、再発行、再取得または復元対応を行うことはできません。</li>
+                </ol>
+            </div>
+            <div class="section-block">
+                <h2>第4条（データ消失等）</h2>
+                <p>当方は、端末の故障、紛失、盗難、機種変更、OSアップデート、アプリの削除、誤操作、第三者による不正アクセス、通信障害、災害その他理由のいかんを問わず、ユーザーデータの消失、破損、改変、漏えいまたは利用不能により生じた損害についてアプリの不具合も含め一切責任を負いません。ただし、当方に故意または重大な過失がある場合は第7条の定めに従うものとします。</p>
+            </div>
+            <div class="section-block">
+                <h2>第5条（無保証）</h2>
+                <p>本アプリは現状有姿（AS IS）で提供されるものとします。当方は、本アプリについて、その正確性、完全性、有用性、継続性、安全性、信頼性、特定目的への適合性その他一切の事項について、明示または黙示を問わず保証しません。</p>
+            </div>
+            <div class="section-block">
+                <h2>第6条（サービスの変更・停止・終了）</h2>
+                <p>当方は、ユーザーへの事前通知なく、本アプリの内容変更、機能追加、機能削除、一時停止または提供終了を行うことができます。これらによりユーザーに損害または不利益が生じた場合であっても、当方は一切責任を負いません。ただし、当方に故意または重大な過失がある場合は第7条の定めに従うものとします。</p>
+            </div>
+            <div class="section-block">
+                <h2>第7条（免責および責任の制限）</h2>
+                <ol>
+                    <li>当方は、本アプリの利用または利用不能、本アプリの不具合、内容変更、中断、停止、終了、データ消失その他本アプリに関連して生じた一切の損害について責任を負いません。</li>
+                    <li>法令上、当方の損害賠償責任が否定されない場合であっても、当方の責任は、当方に故意または重大な過失がある場合を除き、ユーザーが本アプリの利用に関連して当方へ現実に支払った利用料金の総額を上限とします。本アプリが無償で提供されている場合、当方の損害賠償責任の上限額は0円とします。</li>
+                    <li>当方は、逸失利益、事業機会の喪失、データ価値の喪失、精神的損害、間接損害、特別損害、付随的損害その他これらに類する損害について、一切責任を負わないものとします。</li>
+                </ol>
+            </div>
+            <div class="section-block">
+                <h2>第8条（知的財産権）</h2>
+                <p>本アプリに関する著作権その他の知的財産権は当方または正当な権利者に帰属します。</p>
+            </div>
+            <div class="section-block">
+                <h2>第9条（規約の変更）</h2>
+                <p>当方は必要に応じて本規約を変更できるものとします。</p>
+            </div>
+            <div class="section-block">
+                <h2>第10条（準拠法・管轄および紛争解決）</h2>
+                <ol>
+                    <li>本規約は日本法に準拠します。</li>
+                    <li>本アプリに関して紛争が生じた場合、京都地方裁判所または京都簡易裁判所を第一審の専属的合意管轄裁判所とします。</li>
+                    <li>当事者間の協議または合意により、日本の指定仲裁機関（日本商事仲裁協会等の日本の仲裁団体）に解決を委ねて処理する場合があります。</li>
+                </ol>
+            </div>
+            <div class="section-block">
+                <h2>制定日・最終改定日</h2>
+                <p>制定日：2026年6月6日<br>最終改定日：2026年11月7日</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================= 英語コンテンツ ================= -->
+    <div id="content-en" class="lang-content">
+        <div class="nav-links">
+            <a href="#privacy-en">Privacy Policy</a> | <a href="#terms-en">Terms of Use</a>
+        </div>
+
+        <section id="privacy-en">
+            <h1>Privacy Policy</h1>
+            <div class="section-block">
+                <p>shinzan ("we," "us," or "our") sets forth the following policy regarding the handling of user information in the smartphone application "QR Code Omakase" (the "App").</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 1 (Information We Collect)</h2>
+                <p>The App handles the following information.</p>
+                <ul>
+                    <li><strong>Information entered or saved by users:</strong> QR code creation data, scanned data, history information, etc.<br>This information is stored and accumulated only on the user's device (local environment) in order to provide the App's functions. It is never transmitted to, collected by, or stored on any external server managed by us.</li>
+                    <li><strong>Information related to advertising:</strong> The App does not track users across other companies' apps or websites. In the advertising service used by the App, the advertising provider (Google) may process minimal data such as IP addresses and device information solely for technical and operational purposes, including the prevention of fraudulent clicks, maintaining appropriate ad delivery regions, and accurate measurement of impressions. This data is not used for the purpose of identifying or tracking individual users.</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h2>Article 2 (Purposes of Use)</h2>
+                <p>The App uses user information for the following purposes.</p>
+                <ul>
+                    <li>Providing QR code creation and scanning functions</li>
+                    <li>Providing history management functions</li>
+                    <li>Integrating with device functions such as the camera</li>
+                    <li>Displaying advertisements and measuring advertising effectiveness</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h2>Article 3 (Access to Camera and Photo Library)</h2>
+                <p>The App may access the camera and photo library when the user voluntarily scans a QR code or loads an image.</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 4 (Advertising Services)</h2>
+                <p>The App uses Google AdMob. The App is configured for non-personalized advertising and does not track or identify users. For information processing necessary for the normal and safe operation of the advertising delivery system, please refer to Google's Privacy Policy.<br>
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a></p>
+            </div>
+            <div class="section-block">
+                <h2>Article 5 (Provision to Third Parties)</h2>
+                <p>We will not provide personal information or user information to third parties without the user's consent, except as required by law. However, in connection with the use of advertising delivery services, the advertising provider may process the minimum information necessary for technical operations as described above.</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 6 (Data Management)</h2>
+                <p>QR code data, history, and other data stored in the App shall be managed at the user's own responsibility. We do not guarantee the storage, maintenance, backup, restoration, migration, synchronization, or preservation of user data. The App does not store user data on servers managed by us, and we cannot access user data. Therefore, we cannot perform data recovery, reissuance, or restoration.</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 7 (Changes to This Privacy Policy)</h2>
+                <p>We may change this Policy as necessary. The revised content shall become effective when published in the App or by an appropriate method.</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 8 (Contact)</h2>
+                <p>Email: shinzan35@ymail.ne.jp<br>Established: June 6, 2026 / Last revised: November 7, 2026</p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="terms-en">
+            <h1>Terms of Use</h1>
+            <div class="section-block">
+                <p>These Terms set forth the conditions for using the application "QR Code Omakase" (the "App") provided by shinzan ("we," "us," or "our").</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 1 (Application)</h2>
+                <ol>
+                    <li>By using the App, you are deemed to have agreed to these Terms.</li>
+                    <li>Users who are minors, including those under 18, shall use the App with the consent of their legal representative (e.g., a parent or guardian).</li>
+                </ol>
+            </div>
+            <div class="section-block">
+                <h2>Article 2 (Use at Your Own Responsibility)</h2>
+                <p>Users shall use the App at their own responsibility and discretion.</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 3 (Data Management and Backup)</h2>
+                <ol>
+                    <li>QR code data, history, and other data saved in the App (the "User Data") shall be managed at the user's own responsibility.</li>
+                    <li>The App does not transmit or store User Data on servers managed by us, and as a general rule, User Data is stored on the user's device.</li>
+                    <li>We do not guarantee the storage, maintenance, backup, synchronization, migration, restoration, preservation, or any similar matters regarding User Data.</li>
+                    <li>Users shall back up important data, records, and other information by appropriate means, such as saving screenshots or backing up their device, as necessary.</li>
+                    <li>Because we do not hold User Data, we cannot recover, reissue, reacquire, or restore data.</li>
+                </ol>
+            </div>
+            <div class="section-block">
+                <h2>Article 4 (Data Loss, etc.)</h2>
+                <p>We shall not be liable for any damages arising from the loss, corruption, alteration, leakage, or unavailability of User Data, including app defects, regardless of the cause, including device failure, loss, theft, change of device, OS update, deletion of the App, operational error, unauthorized access by third parties, communication failure, or disaster. However, if we are found to have acted with intent or gross negligence, Article 7 shall apply.</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 5 (No Warranty)</h2>
+                <p>The App is provided on an "as is" basis. We make no warranties, express or implied, regarding the App, including its accuracy, completeness, usefulness, continuity, safety, reliability, fitness for a particular purpose, or any other matter.</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 6 (Changes, Suspension, and Termination of the Service)</h2>
+                <p>We may change, add, remove, suspend, or discontinue the App's content or functions without prior notice to users. We shall not be liable for any damages or disadvantages incurred by users as a result. However, if we are found to have acted with intent or gross negligence, Article 7 shall apply.</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 7 (Disclaimer and Limitation of Liability)</h2>
+                <ol>
+                    <li>We shall not be liable for any damages arising in connection with the App, including the use or inability to use the App, defects, content changes, interruption, suspension, termination, or loss of data.</li>
+                    <li>Even if our liability for damages is not denied under applicable law, our liability shall be limited to the total amount of usage fees actually paid by the user to us in connection with the use of the App, unless we acted with intent or gross negligence. If the App is provided free of charge, the maximum amount of our liability for damages shall be zero yen (JPY 0).</li>
+                    <li>We shall not be liable for any lost profits, loss of business opportunities, loss of data value, emotional distress, indirect damages, special damages, incidental damages, or similar damages.</li>
+                </ol>
+            </div>
+            <div class="section-block">
+                <h2>Article 8 (Intellectual Property Rights)</h2>
+                <p>Copyrights and other intellectual property rights related to the App belong to us or the rightful owners.</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 9 (Changes to These Terms)</h2>
+                <p>We may change these Terms as necessary.</p>
+            </div>
+            <div class="section-block">
+                <h2>Article 10 (Governing Law, Jurisdiction, and Dispute Resolution)</h2>
+                <ol>
+                    <li>These Terms shall be governed by the laws of Japan.</li>
+                    <li>If a dispute arises regarding the App, the Kyoto District Court or the Kyoto Summary Court shall be the court of exclusive jurisdiction in the first instance.</li>
+                    <li>By consultation or agreement between the parties, the dispute may be referred to a designated Japanese arbitration institution (such as the Japan Commercial Arbitration Association or another Japanese arbitration body) for resolution.</li>
+                </ol>
+            </div>
+            <div class="section-block">
+                <h2>Established / Last Revised</h2>
+                <p>Established: June 6, 2026 / Last revised: November 7, 2026</p>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    function setLanguage(lang) {
+        // コンテンツの表示切替
+        document.getElementById('content-ja').classList.remove('active');
+        document.getElementById('content-en').classList.remove('active');
+        document.getElementById('content-' + lang).classList.add('active');
+
+        // ボタンの見た目切替
+        document.getElementById('btn-ja').classList.remove('active');
+        document.getElementById('btn-en').classList.remove('active');
+        document.getElementById('btn-' + lang).classList.add('active');
+
+        // ローカルストレージに保存（次回アクセス時も維持）
+        localStorage.setItem('preferred_lang', lang);
+    }
+
+    // ページ読み込み時の言語判定
+    window.onload = function() {
+        const savedLang = localStorage.getItem('preferred_lang');
+        if (savedLang) {
+            setLanguage(savedLang);
+        } else {
+            // ブラウザの言語設定を確認（日本語以外なら英語にする）
+            const userLang = navigator.language || navigator.userLanguage;
+            if (userLang.startsWith('ja')) {
+                setLanguage('ja');
+            } else {
+                setLanguage('en');
+            }
+        }
+    };
+</script>
+
+</body>
+</html>
