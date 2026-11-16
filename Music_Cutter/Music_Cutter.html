@@ -1,1 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Cutter - プライバシーポリシー &amp; 利用規約 / Privacy Policy &amp; Terms of Service</title>
+  <style>
+    :root {
+      --bg-color: #f9fafb;
+      --card-bg: #ffffff;
+      --text-color: #1f2937;
+      --muted-color: #6b7280;
+      --border-color: #e5e7eb;
+      --accent-color: #2563eb;
+      --accent-hover: #1d4ed8;
+    }
 
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #111827;
+        --card-bg: #1f2937;
+        --text-color: #f3f4f6;
+        --muted-color: #9ca3af;
+        --border-color: #374151;
+        --accent-color: #3b82f6;
+        --accent-hover: #60a5fa;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.75;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .app-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .lang-toggle button {
+      background: transparent;
+      border: none;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--muted-color);
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .lang-toggle button.active {
+      background-color: var(--accent-color);
+      color: #ffffff;
+    }
+
+    main {
+      max-width: 820px;
+      margin: 24px auto 60px;
+      padding: 0 16px;
+    }
+
+    .nav-pills {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-pills a {
+      text-decoration: none;
+      color: var(--accent-color);
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .nav-pills a:hover {
+      border-color: var(--accent-color);
+    }
+
+    section.card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 6px;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 8px;
+    }
+
+    .updated {
+      font-size: 0.85rem;
+      color: var(--muted-color);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin-top: 26px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ul, ol {
+      margin: 8px 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    a {
+      color: var(--accent-color);
+      word-break: break-all;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted-color);
+      margin-top: 40px;
+    }
+
+    /* 言語切り替え表示制御 */
+    body.lang-ja .en {
+      display: none;
+    }
+
+    body.lang-en .ja {
+      display: none;
+    }
+  </style>
+</head>
+<body class="lang-ja">
+
+  <header>
+    <div class="app-title">Music Cutter</div>
+    <div class="lang-toggle" role="group" aria-label="Language Switch">
+      <button id="btn-ja" class="active" onclick="setLanguage('ja')">日本語</button>
+      <button id="btn-en" onclick="setLanguage('en')">English</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ページ内リンク -->
+    <nav class="nav-pills">
+      <a href="#privacy-policy">
+        <span class="ja">プライバシーポリシー</span>
+        <span class="en">Privacy Policy</span>
+      </a>
+      <a href="#terms-of-service">
+        <span class="ja">利用規約</span>
+        <span class="en">Terms of Service</span>
+      </a>
+    </nav>
+
+    <!-- ================= プライバシーポリシー / Privacy Policy ================= -->
+    <section id="privacy-policy" class="card">
+      <!-- 日本語 -->
+      <div class="ja">
+        <h1>プライバシーポリシー</h1>
+        <p class="updated">最終更新: 2026年11月15日</p>
+        <p>shinzan（以下「当方」といいます。）は、スマートフォン向けアプリケーション「Music Cutter」（以下「本アプリ」といいます。）におけるユーザー情報の取扱いについて、以下のとおり定めます。</p>
+
+        <h2>第1条（基本方針）</h2>
+        <p>当方は、個人情報の保護に関する法律その他の関係法令を遵守し、本アプリにおけるユーザー情報を適切に取り扱います。本アプリは端末内で完結する処理を基本とし、当方がユーザーの情報を収集・蓄積するサーバーは保有していません。</p>
+
+        <h2>第2条（取得する情報）</h2>
+        <p>本アプリは、機能の提供に必要な範囲で、次の情報をユーザーの端末内にのみ保存します。</p>
+        <ul>
+          <li>ユーザーが登録した曲間（動画ID、動画タイトル、動画の長さ、曲間の位置、登録日時）</li>
+          <li>視聴履歴（動画ID、動画タイトル、最後に再生した日時）</li>
+          <li>お気に入り（動画ID、動画タイトル、追加日時）</li>
+          <li>アプリ設定（表示言語、末尾で先頭に戻るかどうか）</li>
+          <li>ユーザーが入力した動画URL</li>
+        </ul>
+        <p>これらの情報は当方へ送信されず、当方が閲覧・取得することはできません。</p>
+
+        <h2>第3条（利用目的）</h2>
+        <p>取得した情報は、次の目的にのみ利用します。</p>
+        <ul>
+          <li>動画を開き直したときに曲間を復元するため</li>
+          <li>「一曲飛ばし」の飛び先を計算するため</li>
+          <li>視聴履歴とお気に入りを表示するため</li>
+          <li>表示言語などの設定を再起動後も引き継ぐため</li>
+        </ul>
+        <p>上記以外の目的（広告の最適化、プロファイリング、第三者への販売など）には利用しません。</p>
+
+        <h2>第4条（保存場所・保存期間）</h2>
+        <p>前条の情報は、iOS の SwiftData および UserDefaults により、ユーザーの端末内にのみ保存されます。保存期間は、ユーザーが削除するまで、または本アプリを削除するまでです。当方はこれらの情報を保有しないため、保存場所および保存期間を当方が管理することはありません。</p>
+
+        <h2>第5条（情報の削除）</h2>
+        <p>曲間は「曲間」一覧のスワイプから削除できます。視聴履歴とお気に入りは、ライブラリタブで「削除選択」を押し、削除したい項目にチェックを入れて削除します（「すべて選択」でまとめて削除することもできます）。お気に入りは★を再度タップして解除することもできます。本アプリを端末から削除すると、端末内に保存されたすべての情報が削除されます。削除後の復元はできません。</p>
+
+        <h2>第6条（外部サービスとの通信）</h2>
+        <p>本アプリは、動画の視聴に YouTube の画面をアプリ内（WKWebView）で表示します。このため、動画の読み込み・再生に伴い、Google LLC および YouTube に対して、IPアドレス、Cookie、端末・OSの情報、視聴した動画の情報などが送信される場合があります。これらは各サービスのプライバシーポリシーに従って取り扱われ、当方が取得・管理することはありません。</p>
+        <p>Google のプライバシーポリシー: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a><br>
+        YouTube の利用規約: <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">https://www.youtube.com/t/terms</a></p>
+
+        <h2>第7条（広告サービス）</h2>
+        <p>本アプリの画面下部にはダミーの広告枠を表示しています。現時点では第三者の広告配信SDKを組み込んでおらず、広告識別子（IDFA）の取得、広告のターゲティング、トラッキングは行っていません。</p>
+        <p>将来 Google AdMob などの広告配信サービスを導入する場合は、事前に本ポリシーを変更して公表し、広告配信事業者による情報の取扱いについて Google のプライバシーポリシー（<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>）をご確認いただけるようにします。あわせて、iOS の App Tracking Transparency に従い、トラッキングの許可をお願いする場合があります。</p>
+
+        <h2>第8条（アクセス解析・第三者SDK）</h2>
+        <p>本アプリは、アクセス解析ツール、クラッシュレポート収集ツール、その他の第三者SDKを組み込んでいません。アプリの利用状況や操作履歴を当方へ送信することはありません。</p>
+
+        <h2>第9条（第三者提供）</h2>
+        <p>当方は、法令に基づく場合、またはユーザーの同意がある場合を除き、ユーザーの情報を第三者へ提供しません。ただし、前各条のとおり、YouTube など外部サービスの利用に伴い、当該事業者が自ら情報を取得する場合があります。この場合の取扱いは、当該事業者のプライバシーポリシーに従います。</p>
+
+        <h2>第10条（安全管理措置）</h2>
+        <p>本アプリは情報を端末内にのみ保存するため、その安全管理は端末の管理に依存します。端末のパスコードや生体認証の設定、OSの最新化、紛失・盗難時のリモートワイプなど、ユーザー自身による安全管理をお願いします。当方は端末内の情報へアクセスできないため、当方による安全管理措置の対象外となります。</p>
+
+        <h2>第11条（開示・訂正・削除等の請求）</h2>
+        <p>当方はユーザーの情報を保有していないため、第三者提供記録の開示、内容の訂正・追加・削除、利用停止などの請求の対象となる情報を保有していません。これらの操作は、ユーザー自身が端末上で行ってください。</p>
+
+        <h2>第12条（未成年の利用）</h2>
+        <p>未成年のユーザーは、保護者など法定代理人の同意を得たうえで本アプリを利用してください。保護者の方は、お子さまの端末内の情報や利用状況を、端末の設定および本アプリの画面からご確認ください。</p>
+
+        <h2>第13条（本ポリシーの変更）</h2>
+        <p>当方は、法令の改正、機能の追加・変更、外部サービスの変更などに応じて、本ポリシーを変更することがあります。変更後の内容は、本アプリ内に表示した時点、または当方のウェブサイトに掲載した時点から効力を生じます。重要な変更を行う場合は、アプリ内で分かりやすくお知らせします。</p>
+
+        <h2>第14条（お問い合わせ）</h2>
+        <p>本ポリシーに関するご質問、ご意見、お問い合わせは、次の連絡先までお願いします。<br>
+        shinzan...（※ここに連絡先メールアドレスを記載してください）</p>
+
+        <h2>制定日・最終改定日</h2>
+        <p>制定日: 2026年11月11日<br>
+        最終改定日: 2026年11月15日</p>
+      </div>
+
+      <!-- English -->
+      <div class="en">
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last Updated: November 15, 2026</p>
+        <p>shinzan ("we," "us," or "our") establishes this Privacy Policy regarding the handling of user information in the smartphone application "Music Cutter" (the "App").</p>
+
+        <h2>Article 1 (Basic Policy)</h2>
+        <p>We comply with the Act on the Protection of Personal Information and other applicable laws and regulations, and handle user information in the App appropriately. The App is designed to process data locally on the user's device, and we do not operate any servers that collect or store user information.</p>
+
+        <h2>Article 2 (Information Collected)</h2>
+        <p>To the extent necessary to provide its features, the App stores the following information solely within the user's device:</p>
+        <ul>
+          <li>Track boundaries ("Cue Points") registered by the user (video ID, video title, video duration, cue point timestamp, registration date/time)</li>
+          <li>Viewing history (video ID, video title, last played date/time)</li>
+          <li>Favorites (video ID, video title, added date/time)</li>
+          <li>App settings (display language, whether to loop back to the beginning at the end)</li>
+          <li>Video URLs entered by the user</li>
+        </ul>
+        <p>This information is never transmitted to us, and we cannot view or obtain it.</p>
+
+        <h2>Article 3 (Purpose of Use)</h2>
+        <p>The acquired information is used solely for the following purposes:</p>
+        <ul>
+          <li>To restore registered track boundaries when reopening a video</li>
+          <li>To calculate the target timestamp when skipping tracks</li>
+          <li>To display viewing history and favorites</li>
+          <li>To retain settings such as display language after restarting the App</li>
+        </ul>
+        <p>We do not use this information for any other purposes, such as ad optimization, profiling, or sale to third parties.</p>
+
+        <h2>Article 4 (Storage Location and Retention Period)</h2>
+        <p>The information described in the preceding article is stored solely on the user's device via iOS SwiftData and UserDefaults. It is retained until deleted by the user or until the App is uninstalled. Because we do not retain this information, we do not manage its storage location or retention period.</p>
+
+        <h2>Article 5 (Deletion of Information)</h2>
+        <p>Track boundaries can be deleted by swiping in the track boundary list. Viewing history and favorites can be deleted from the Library tab by tapping "Select to Delete," checking the desired items, and deleting them (you may also use "Select All"). Favorites can also be removed by tapping the star icon (★) again. Deleting the App from your device removes all data stored locally on the device. Deleted data cannot be restored.</p>
+
+        <h2>Article 6 (Communication with External Services)</h2>
+        <p>The App displays YouTube within the application (via WKWebView) for video playback. Accordingly, when loading or playing videos, information such as IP addresses, cookies, device/OS information, and watched video data may be transmitted to Google LLC and YouTube. Such data is handled in accordance with each service's privacy policy, and we do not collect or manage it.</p>
+        <p>Google Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a><br>
+        YouTube Terms of Service: <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">https://www.youtube.com/t/terms</a></p>
+
+        <h2>Article 7 (Advertising Services)</h2>
+        <p>A placeholder ad banner is displayed at the bottom of the App screen. Currently, no third-party advertising SDKs are integrated, and we do not collect the Advertising Identifier (IDFA), perform ad targeting, or track users.</p>
+        <p>If we introduce an advertising service such as Google AdMob in the future, we will revise and publish this Policy in advance so that users can review Google's Privacy Policy (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>) regarding how the ad provider handles information. In addition, we may request permission for tracking in accordance with iOS App Tracking Transparency.</p>
+
+        <h2>Article 8 (Analytics and Third-Party SDKs)</h2>
+        <p>The App does not incorporate analytics tools, crash reporting tools, or any other third-party SDKs. Usage statistics or operation logs are never sent to us.</p>
+
+        <h2>Article 9 (Provision to Third Parties)</h2>
+        <p>We do not provide user information to third parties except as required by law or with the user's consent. However, as stated in the preceding articles, external service providers such as YouTube may independently collect information when you use their services, in which case their respective privacy policies apply.</p>
+
+        <h2>Article 10 (Security Control Measures)</h2>
+        <p>Because the App stores data solely on the user's device, data security depends on the management of the device itself. Users are responsible for securing their devices through passcodes, biometric authentication, keeping the OS up to date, and enabling remote wipe in case of loss or theft. Since we cannot access data on your device, we are exempt from implementing security control measures over such data.</p>
+
+        <h2>Article 11 (Requests for Disclosure, Correction, or Deletion)</h2>
+        <p>Because we do not hold user information, we possess no data subject to requests for disclosure of third-party provision records, correction, addition, deletion, or suspension of use. Please perform any such operations directly on your device.</p>
+
+        <h2>Article 12 (Use by Minors)</h2>
+        <p>Minor users must obtain the consent of a parent or legal guardian before using the App. Parents and guardians should review the information and usage status stored on their child's device via device settings and within the App.</p>
+
+        <h2>Article 13 (Changes to This Policy)</h2>
+        <p>We may amend this Policy in response to legal revisions, feature additions or changes, or changes to external services. Any revised Policy shall take effect when displayed within the App or posted on our website. For significant changes, we will provide clear notice within the App.</p>
+
+        <h2>Article 14 (Contact Us)</h2>
+        <p>For questions, comments, or inquiries regarding this Policy, please contact us at:<br>
+        shinzan... (*Please insert your contact email address here)</p>
+
+        <h2>Effective and Revision Dates</h2>
+        <p>Established: November 11, 2026<br>
+        Last Revised: November 15, 2026</p>
+      </div>
+    </section>
+
+    <!-- ================= 利用規約 / Terms of Service ================= -->
+    <section id="terms-of-service" class="card">
+      <!-- 日本語 -->
+      <div class="ja">
+        <h1>利用規約</h1>
+        <p class="updated">最終更新: 2026年11月15日</p>
+        <p>本規約は、shinzan（以下「当方」といいます。）が提供するアプリケーション「Music Cutter」（以下「本アプリ」といいます。）の利用条件を定めるものです。</p>
+
+        <h2>第1条（適用）</h2>
+        <ol>
+          <li>本規約は、shinzan（以下「当方」といいます。）が提供するアプリケーション「Music Cutter」（以下「本アプリ」といいます。）の利用条件を定めるものです。</li>
+          <li>ユーザーが本アプリを利用した時点で、本規約に同意したものとみなされます。</li>
+          <li>未成年のユーザーは、法定代理人（親権者等）の同意を得たうえで本アプリを利用するものとします。</li>
+        </ol>
+
+        <h2>第2条（自己責任による利用）</h2>
+        <p>ユーザーは、自己の責任と判断において本アプリを利用するものとします。本アプリの利用により生じた結果について、当方は第9条に定める範囲を超えて責任を負いません。</p>
+
+        <h2>第3条（本アプリの内容）</h2>
+        <ol>
+          <li>本アプリは、連続した音楽動画の再生位置を移動する操作を補助するものです。</li>
+          <li>曲間は、ユーザーが動画の再生位置を登録したものであり、楽曲の自動認識や解析によるものではありません。曲間の位置が実際の曲の変わり目と一致しない場合があります。</li>
+          <li>本アプリは、YouTube の画面をアプリ内（WKWebView）で表示します。動画の保存、ダウンロード、ストリームの抽出、再配布は行いません。</li>
+        </ol>
+
+        <h2>第4条（外部サービス）</h2>
+        <ol>
+          <li>本アプリは YouTube を利用しており、YouTube の利用には YouTube の利用規約および Google の各ポリシーが適用されます。</li>
+          <li>動画の公開状況、埋め込みの可否、広告の表示、仕様変更などは、外部サービスの定めに従います。</li>
+          <li>外部サービスの仕様変更・停止などにより本アプリの一部が利用できなくなった場合でも、当方は責任を負いません。</li>
+        </ol>
+
+        <h2>第5条（データ管理およびバックアップ）</h2>
+        <ol>
+          <li>本アプリに保存される曲間、視聴履歴、お気に入り、設定その他のデータは、ユーザー自身の責任において管理するものとします。</li>
+          <li>本アプリは、これらのデータを当方の管理するサーバーへ送信または保存せず、原則としてユーザーの端末内に保存します。</li>
+          <li>当方は、これらのデータの保存、維持、バックアップ、同期、移行、復元、保全その他これらに類する事項について一切保証しません。</li>
+          <li>ユーザーは、必要に応じてスクリーンショットの保存、端末のバックアップ（iCloud バックアップ等）その他適切な方法により、自らバックアップを行うものとします。</li>
+          <li>当方は、ユーザーにとって重要なデータの保存または保全を保証するものではありません。</li>
+          <li>当方はこれらのデータを保有していないため、データの復旧、再発行、再取得または復元対応を行うことはできません。</li>
+        </ol>
+
+        <h2>第6条（データ消失等）</h2>
+        <p>当方は、端末の故障、紛失、盗難、機種変更、OS アップデート、本アプリの削除、誤操作、第三者による不正アクセス、通信障害、災害その他理由のいかんを問わず、データの消失、破損、改変、漏えいまたは利用不能により生じた損害について、本アプリの不具合を含め一切責任を負いません。ただし、当方に故意または重大な過失がある場合は第9条の定めに従います。</p>
+
+        <h2>第7条（無保証）</h2>
+        <p>本アプリは現状有姿（AS IS）で提供されます。当方は、本アプリについて、その正確性、完全性、有用性、継続性、安全性、信頼性、特定目的への適合性、外部サービスとの互換性その他一切の事項について、明示または黙示を問わず保証しません。</p>
+
+        <h2>第8条（サービスの変更・停止・終了）</h2>
+        <p>当方は、ユーザーへの事前通知なく、本アプリの内容変更、機能追加、機能削除、一時停止または提供終了を行うことができます。これらによりユーザーに損害または不利益が生じた場合であっても、当方は一切責任を負いません。ただし、当方に故意または重大な過失がある場合は第9条の定めに従います。</p>
+
+        <h2>第9条（免責および責任の制限）</h2>
+        <ol>
+          <li>当方は、本アプリの利用または利用不能、本アプリの不具合、内容変更、中断、停止、終了、データ消失その他本アプリに関連して生じた一切の損害について責任を負いません。</li>
+          <li>法令上、当方の損害賠償責任が否定されない場合であっても、当方の責任は、当方に故意または重大な過失がある場合を除き、ユーザーが本アプリの利用に関連して当方へ現実に支払った利用料金の総額を上限とします。本アプリが無償で提供されている場合、当方の損害賠償責任の上限額は0円とします。</li>
+          <li>当方は、逸失利益、事業機会の喪失、データ価値の喪失、精神的損害、間接損害、特別損害、付随的損害その他これらに類する損害について、一切責任を負わないものとします。</li>
+        </ol>
+
+        <h2>第10条（禁止事項）</h2>
+        <p>ユーザーは、本アプリの利用にあたり、次の行為を行ってはなりません。</p>
+        <ol>
+          <li>法令または公序良俗に違反する行為</li>
+          <li>第三者の著作権、商標権その他の権利を侵害する行為</li>
+          <li>動画のダウンロード、保存、再配布その他 YouTube の利用規約に違反する態様での利用</li>
+          <li>本アプリのリバースエンジニアリング、逆コンパイル、改変、再配布</li>
+          <li>本アプリの運営を妨害する行為、不正アクセス、過度な負荷をかける行為</li>
+          <li>その他、当方が不適切と判断する行為</li>
+        </ol>
+
+        <h2>第11条（知的財産権）</h2>
+        <ol>
+          <li>本アプリに関する著作権、商標権その他の知的財産権は、当方または正当な権利者に帰属します。</li>
+          <li>本アプリが表示する動画、楽曲、サムネイルなどのコンテンツに関する権利は、各権利者に帰属します。</li>
+        </ol>
+
+        <h2>第12条（広告・応援動画）</h2>
+        <ol>
+          <li>本アプリの画面下部にはダミーの広告枠を表示しています。</li>
+          <li>設定画面には開発者を応援するための動画へのリンクを表示しています。リンク先の内容および利用条件は、リンク先サービスの定めに従います。</li>
+          <li>将来、第三者の広告配信サービスを導入する場合は、本規約およびプライバシーポリシーを変更して公表します。</li>
+        </ol>
+
+        <h2>第13条（本規約の変更）</h2>
+        <p>当方は必要に応じて本規約を変更できるものとします。変更後の内容は、本アプリ内または当方のウェブサイトに掲載した時点から効力を生じます。変更後に本アプリを利用した場合、変更内容に同意したものとみなされます。</p>
+
+        <h2>第14条（準拠法・管轄）</h2>
+        <ol>
+          <li>本規約は日本法に準拠します。</li>
+          <li>本アプリに関して紛争が生じた場合、京都地方裁判所または京都簡易裁判所を第一審の専属的合意管轄裁判所とします。</li>
+        </ol>
+
+        <h2>制定日・最終改定日</h2>
+        <p>制定日: 2026年11月11日<br>
+        最終改定日: 2026年11月15日</p>
+      </div>
+
+      <!-- English -->
+      <div class="en">
+        <h1>Terms of Service</h1>
+        <p class="updated">Last Updated: November 15, 2026</p>
+        <p>These Terms of Service ("Terms") set forth the conditions for using the application "Music Cutter" (the "App") provided by shinzan ("we," "us," or "our").</p>
+
+        <h2>Article 1 (Application)</h2>
+        <ol>
+          <li>These Terms govern the use of the application "Music Cutter" provided by shinzan.</li>
+          <li>By using the App, you are deemed to have agreed to these Terms.</li>
+          <li>Minor users must obtain the consent of a legal representative (such as a parent or guardian) before using the App.</li>
+        </ol>
+
+        <h2>Article 2 (Use at Your Own Risk)</h2>
+        <p>Users shall use the App at their own responsibility and discretion. We assume no responsibility for any results arising from the use of the App beyond the scope set forth in Article 9.</p>
+
+        <h2>Article 3 (Description of the App)</h2>
+        <ol>
+          <li>The App assists users in navigating playback positions within continuous music videos.</li>
+          <li>Track boundaries ("Cue Points") are playback positions manually registered by the user and are not generated through automatic audio recognition or analysis. Registered positions may not match actual track transitions.</li>
+          <li>The App displays YouTube within the application (via WKWebView). It does not save, download, extract streams from, or redistribute videos.</li>
+        </ol>
+
+        <h2>Article 4 (External Services)</h2>
+        <ol>
+          <li>The App utilizes YouTube, and your use of YouTube is governed by the YouTube Terms of Service and Google's respective policies.</li>
+          <li>Video availability, embedding permissions, advertisement display, and specification changes are subject to the rules of the external service.</li>
+          <li>We assume no liability even if part of the App becomes unavailable due to specification changes or discontinuation of external services.</li>
+        </ol>
+
+        <h2>Article 5 (Data Management and Backup)</h2>
+        <ol>
+          <li>Users are responsible for managing track boundaries, viewing history, favorites, settings, and any other data stored in the App.</li>
+          <li>The App does not transmit or store such data on servers managed by us; in principle, all data is stored locally on the user's device.</li>
+          <li>We make no warranties whatsoever regarding the storage, maintenance, backup, synchronization, migration, restoration, or preservation of such data.</li>
+          <li>Users shall back up their own data as necessary by taking screenshots, using device backups (such as iCloud Backup), or other appropriate methods.</li>
+          <li>We do not guarantee the storage or preservation of data important to the user.</li>
+          <li>Because we do not possess this data, we cannot recover, reissue, reacquire, or restore lost data.</li>
+        </ol>
+
+        <h2>Article 6 (Data Loss)</h2>
+        <p>We assume no liability whatsoever for damages resulting from the loss, corruption, alteration, leakage, or unavailability of data—including those caused by defects in the App—regardless of cause, such as device failure, loss, theft, device replacement, OS updates, uninstallation of the App, operational errors, unauthorized third-party access, communication failures, or disasters. However, in cases of willful misconduct or gross negligence on our part, Article 9 shall apply.</p>
+
+        <h2>Article 7 (Disclaimer of Warranties)</h2>
+        <p>The App is provided "AS IS." We make no warranties, express or implied, regarding the App's accuracy, completeness, usefulness, continuity, safety, reliability, fitness for a particular purpose, compatibility with external services, or any other matter.</p>
+
+        <h2>Article 8 (Modification, Suspension, and Termination of Service)</h2>
+        <p>We may modify the content of the App, add or remove features, or temporarily suspend or discontinue the App without prior notice to users. We shall not be liable for any damages or disadvantages suffered by users as a result. However, in cases of willful misconduct or gross negligence on our part, Article 9 shall apply.</p>
+
+        <h2>Article 9 (Limitation of Liability)</h2>
+        <ol>
+          <li>We shall not be liable for any damages arising out of or in connection with the use or inability to use the App, defects in the App, content changes, interruptions, suspensions, termination, or data loss.</li>
+          <li>Even where our liability for damages cannot be excluded under applicable law, except in cases of willful misconduct or gross negligence on our part, our total liability shall be limited to the total amount of usage fees actually paid by the user to us in connection with the use of the App. Where the App is provided free of charge, the maximum amount of our liability for damages shall be 0 JPY.</li>
+          <li>We shall not be liable for any lost profits, loss of business opportunities, loss of data value, emotional distress, indirect damages, special damages, incidental damages, or any similar damages.</li>
+        </ol>
+
+        <h2>Article 10 (Prohibited Conduct)</h2>
+        <p>Users must not engage in any of the following acts when using the App:</p>
+        <ol>
+          <li>Acts that violate laws, regulations, or public order and morals</li>
+          <li>Acts that infringe upon copyrights, trademarks, or other rights of third parties</li>
+          <li>Downloading, saving, redistributing videos, or otherwise using the App in a manner that violates YouTube's Terms of Service</li>
+          <li>Reverse engineering, decompiling, modifying, or redistributing the App</li>
+          <li>Acts that interfere with the operation of the App, unauthorized access, or placing an excessive load on systems</li>
+          <li>Any other acts deemed inappropriate by us</li>
+        </ol>
+
+        <h2>Article 11 (Intellectual Property Rights)</h2>
+        <ol>
+          <li>Copyrights, trademarks, and all other intellectual property rights relating to the App belong to us or the rightful owners.</li>
+          <li>Rights to videos, music, thumbnails, and other content displayed by the App belong to their respective rights holders.</li>
+        </ol>
+
+        <h2>Article 12 (Advertisements and Support Videos)</h2>
+        <ol>
+          <li>A placeholder advertisement frame is displayed at the bottom of the App screen.</li>
+          <li>The Settings screen displays a link to a video to support the developer. The content and terms of use of the linked destination are governed by the linked service.</li>
+          <li>If we introduce third-party advertising services in the future, we will revise and publish these Terms and the Privacy Policy accordingly.</li>
+        </ol>
+
+        <h2>Article 13 (Amendment of These Terms)</h2>
+        <p>We may amend these Terms as necessary. Amended Terms shall take effect from the time they are posted within the App or on our website. Continued use of the App after any amendment constitutes acceptance of the amended Terms.</p>
+
+        <h2>Article 14 (Governing Law and Jurisdiction)</h2>
+        <ol>
+          <li>These Terms shall be governed by and construed in accordance with the laws of Japan.</li>
+          <li>Any disputes arising in connection with the App shall be subject to the exclusive agreed jurisdiction of the Kyoto District Court or the Kyoto Summary Court in the first instance.</li>
+        </ol>
+
+        <h2>Effective and Revision Dates</h2>
+        <p>Established: November 11, 2026<br>
+        Last Revised: November 15, 2026</p>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2026 shinzan. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    function setLanguage(lang) {
+      document.body.className = 'lang-' + lang;
+      document.documentElement.lang = lang;
+      document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    }
+
+    // 端末・ブラウザの言語設定が英語の場合は初期表示を英語にする
+    window.addEventListener('DOMContentLoaded', () => {
+      const userLang = navigator.language || navigator.userLanguage || '';
+      if (!userLang.toLowerCase().startsWith('ja')) {
+        setLanguage('en');
+      }
+    });
+  </script>
+
+</body>
+</html>
